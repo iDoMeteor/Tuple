@@ -12,26 +12,26 @@
    *
    * @return a String of the linking page.(i believe this is necessary.
    **/
-  function gameOver() {
-    var URL = "http://www.setgame.com/you_completed_todays_puzzle?time=" + board.getElapsedTime();
-    window.top.location = URL;
-  }
-  //***********************************************************************/
-  function showScore(score) {
-    if (document.card != null) {
-      document.card.score.value = score;
-    }
-  }
-  //***********************************************************************/
-  function show(page) {
-    var page = open(page, "PuzzleFrame", "scrollbars=yes,resizable=yes,toolbar=no,width=620,height=250");
-    page.focus();
-  }
-  //***********************************************************************/
-  function showTutorial() {
-    var page = open("http://www.setgame.com/sites/default/files/tutorials/tutorial/SetTutorial.swf", "PuzzleFrame", "scrollbars=no,resizable=no,toolbar=no,width=604,height=404");
-    page.focus();
-  }
+  // function gameOver() {
+  //   var URL = "http://www.setgame.com/you_completed_todays_puzzle?time=" + board.getElapsedTime();
+  //   window.top.location = URL;
+  // }
+  // //***********************************************************************/
+  // function showScore(score) {
+  //   if (document.card != null) {
+  //     document.card.score.value = score;
+  //   }
+  // }
+  // //***********************************************************************/
+  // function show(page) {
+  //   var page = open(page, "PuzzleFrame", "scrollbars=yes,resizable=yes,toolbar=no,width=620,height=250");
+  //   page.focus();
+  // }
+  // //***********************************************************************/
+  // function showTutorial() {
+  //   var page = open("http://www.setgame.com/sites/default/files/tutorials/tutorial/SetTutorial.swf", "PuzzleFrame", "scrollbars=no,resizable=no,toolbar=no,width=604,height=404");
+  //   page.focus();
+  // }
   //***********************************************************************/
   function init() {
     try {
