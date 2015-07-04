@@ -1,5 +1,3 @@
-/* CSS declarations go here */
-
 * {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -72,7 +70,7 @@ body {
   vertical-align: middle;
 }
 .card .name {
-  display: inline-block;
+  display: flex;
   font-size: 1.25em;
   font-weight: 300;
   vertical-align: middle;
