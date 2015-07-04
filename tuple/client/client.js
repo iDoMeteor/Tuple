@@ -1,6 +1,5 @@
 if (Meteor.isClient) {
-  // Meteor.subscribe("tasks");
-  Template.leaderboard.helpers({
+  Template.board.helpers({
     cards: function() {
       return Cards.find({}, {
         sort: {
@@ -15,7 +14,7 @@ if (Meteor.isClient) {
     }
   });
 
-  Template.leaderboard.events({
+  Template.board.events({
     'click .inc': function() {
       Cards.update(Session.get("selectedPlayer"), {
         $inc: {

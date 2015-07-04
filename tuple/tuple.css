@@ -37,7 +37,7 @@ body {
   margin-bottom: 2em;
   text-align: center;
 }
-.leaderboard {
+.board {
   border-top: 1px solid #f1f1f1;
   counter-reset: ol-counter;
   list-style-type: none;
@@ -53,7 +53,7 @@ body {
   transition: background 300ms ease-out;
   border-left: 4px solid white;
 }
-.card:before {
+/*.card:before {
   color: #999;
   content: counter(ol-counter);
   counter-increment: ol-counter;
@@ -63,18 +63,18 @@ body {
   text-align: center;
   vertical-align: middle;
   width: 3em;
-}
+}*/
 .card .avatar {
   display: inline-block;
   margin-right: 1em;
   vertical-align: middle;
 }
-.card .name {
+/*.card .name {
   display: flex;
   font-size: 1.25em;
   font-weight: 300;
   vertical-align: middle;
-}
+}*/
 .card .score {
   color: #333;
   display: block;

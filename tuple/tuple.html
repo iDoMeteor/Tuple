@@ -10,13 +10,13 @@
       <div class="logo"></div>
       <h1 class="title">Tuple</h1>
       <div class="subtitle">Find Patterns for Points</div>
-      {{> leaderboard}}
+      {{> board}}
     </div>
   </body>
 
 
-<template name="leaderboard">
-  <ol class="leaderboard">
+<template name="board">
+  <ol class="board">
     {{#each cards}}
       {{> card}}
     {{/each}}
@@ -35,7 +35,7 @@
 <template name="card">
   <li class="card {{selected}}">
     <span class="name">{{name}}</span>
-    <!-- <img src="../../images/small/01.svg" alt="" /> -->
+
     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="95px" height="62px" viewBox="0 0 95 62" enable-background="new 0 0 95 62" xml:space="preserve">  <image id="image0" width="95" height="62" x="0" y="0"
         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF8AAAA+CAMAAAB6Ojc4AAAABGdBTUEAALGPC/xhBQAAACBjSFJN
     AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAilBMVEX////+/v77+/v4+Pj8
