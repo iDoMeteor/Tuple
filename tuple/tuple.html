@@ -17,7 +17,7 @@
 
 
 <template name="board">
-  <ul class="grid col-lg-4-centered border fixed-height">
+  <ul class="grid">
     {{#each cards}}
       {{> card}}
     {{/each}}
@@ -29,13 +29,13 @@
 
     </div>
   {{else}}
-    <div class="row message">Click a card to select</div>
+    <div class="message">Click a card to select</div>
   {{/if}}
 </template>
 
 <template name="card">
-  <li class="grid col-lg-4-centered fixed-height {{selected}}">
-    <span class="name">{{name}}</span>
+  <li class="{{selected}}">
+
     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="95px" height="62px" viewBox="0 0 95 62" enable-background="new 0 0 95 62" xml:space="preserve">  <image id="image0" width="95" height="62" x="0" y="0"
         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF8AAAA+CAMAAAB6Ojc4AAAABGdBTUEAALGPC/xhBQAAACBjSFJN
     AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAilBMVEX////+/v77+/v4+Pj8
@@ -54,5 +54,6 @@
     x0YvAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE1LTA3LTAyVDIzOjE0OjQ4LTA0OjAwhjHlKQAAACV0
     RVh0ZGF0ZTptb2RpZnkAMjAxMS0wMS0xMVQxOToxNzowNS0wNTowMGhXSpYAAAAASUVORK5CYII=" />
     </svg>
+    <div class="name">{{name}}</div>
   </li>
 </template>
