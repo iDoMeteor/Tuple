@@ -6,7 +6,7 @@
 </head>
 
   <body>
-    <div class="container centered">
+    <div class="container col-lg-4-centered">
       <div class="logo"></div>
       <h1 class="title">Tuple</h1>
       <div class="subtitle">Find Patterns for Points</div>
@@ -17,11 +17,11 @@
 
 
 <template name="board">
-  <ol class="grid fixed-height">     <!-- jumbotron col-lg-4-centered board ||||| col-md-4 border card -->
+  <ul class="grid col-lg-4-centered border fixed-height">
     {{#each cards}}
       {{> card}}
     {{/each}}
-  </ol>
+  </ul>
 
   {{#if selectedName}}
     <div class="details">
@@ -34,9 +34,8 @@
 </template>
 
 <template name="card">
-  <li class="module packagesItem {{selected}}">
+  <li class="grid col-lg-4-centered fixed-height {{selected}}">
     <span class="name">{{name}}</span>
-
     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="95px" height="62px" viewBox="0 0 95 62" enable-background="new 0 0 95 62" xml:space="preserve">  <image id="image0" width="95" height="62" x="0" y="0"
         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF8AAAA+CAMAAAB6Ojc4AAAABGdBTUEAALGPC/xhBQAAACBjSFJN
     AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAilBMVEX////+/v77+/v4+Pj8
@@ -55,6 +54,5 @@
     x0YvAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE1LTA3LTAyVDIzOjE0OjQ4LTA0OjAwhjHlKQAAACV0
     RVh0ZGF0ZTptb2RpZnkAMjAxMS0wMS0xMVQxOToxNzowNS0wNTowMGhXSpYAAAAASUVORK5CYII=" />
     </svg>
-    <span class="score">{{score}}</span>
   </li>
 </template>
