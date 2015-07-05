@@ -1,38 +1,33 @@
 <head>
   <title>tuple</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-  <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css">
-</head>
+  <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css"> </head>
+<!-- /////BEGIN BODY  -->
 
 <body>
   <div class="container">
     <div class="logo"></div>
     <h1 class="title">Tuple</h1>
     <div class="subtitle">Find Patterns for Points</div>
-  </div>
-  {{> board}}
-</body>
-
+  </div> {{> board}} </body>
+<!-- ///////BEGIN TEMPLATES -->
 <template name="board">
   <div class="available-space">
-    <div class="grid fixed-gutter-width fixed-column-width {{selected}}" id="details">
-      {{#each cards}} {{> card}} {{/each}}
+    <div class="scoreboardLeft"> PLAYER 1</div> {{> score}}
+    <div class="grid fixed-gutter-width fixed-column-width {{selected}}" id="details"> {{#each cards}} {{> card}} {{/each}} </div>
+    <div class="scoreboardRight"> PLAYER 2
+      <div class="score2">99 </div>
     </div>
-  </div>
-
-  {{#if selectedName}}
+  </div> {{#if selectedName}}
   <div class="details">
-    <div class="name">{{selectedName}}</div> 
-
-  </div>
-  {{else}}
-  <div class="message">Click a card to select</div>
-  {{/if}}
-</template>
-
+    <div class="name">{{selectedName}}</div>
+  </div> {{else}}
+  <div class="message">Click a card to select</div> {{/if}} </template>
 <template name="card">
-  <div class="box">
-    <span class="name">{{name}}</span>
+  <div class="box inc">
+    <!-- <span class="name">{{name}}</span> -->
     <svg> data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOC4xLjEsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgMTAyNCA3NjgiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDEwMjQgNzY4IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGQ9Ik02MjcuNywyMzRDNjI3LjcsMjM0LDYyNy43LDIzNCw2MjcuNywyMzRjLTAuMSwwLTAuMS0wLjItMC4xLTAuMmMtNS41LTQxLjQtNzUuMi03NS0xMTYuNy03NWMtNDEuNCwwLTM4LjgsMzMuNi0zMy4zLDc1DQoJYzAuMSwwLjksMC4zLDEuNywwLjUsMi42YzE0LjIsOTguMy05OC4zLDE5Ni42LTg0LjIsMjk0LjljMC4xLDAuOSwwLjIsMS43LDAuMywyLjZjNS41LDQxLjQsNzUuMiw3NSwxMTYuNyw3NQ0KCWM0MS4yLDAsMzguNy0zMy44LDMzLjQtNzQuOGMwLDAsMCwwLDAuMSwwQzUyNy41LDQzNCw2NDQuMiwzMzQsNjI3LjcsMjM0eiIvPg0KPC9zdmc+DQo=</svg>
   </div>
 </template>
+<template name="score">
+  <div class="score1"> </div> {{> score}} </template>

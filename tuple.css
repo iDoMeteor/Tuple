@@ -36,10 +36,10 @@ html {
 }*/
 
 body {
-  font: .9em Lato;
+  font: 1em Lato;
 }
 .available-space {
-  max-width: 960px;
+  max-width: 1000px;
   height: 100%;
   margin: 0 auto;
 }
@@ -50,9 +50,31 @@ body {
   overflow: hidden;
   max-width: 800px;
   min-width: 800px;
-  width: 100%;
+  width: 50%;
   margin: 0 auto;
-  padding: 20px 0;
+  padding: 0;
+}
+.scoreboardLeft {
+  position: fixed;
+  top: 40%;
+  left: 200px;
+  height: 100px;
+}
+.scoreboardRight {
+  position: fixed;
+  top: 40%;
+  right: 200px;
+  height: 100px;
+}
+.score1 {
+  margin-top: 20px;
+  height: 80%;
+  text-align: center;
+}
+.score2 {
+  margin-top: 20px;
+  height: 80%;
+  text-align: center;
 }
 .box {
   float: left;
