@@ -1,43 +1,41 @@
-
 <head>
   <title>tuple</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600' rel='stylesheet' type='text/css'>
+  <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css">
 </head>
 
-  <body>
-    <div class="container col-lg-4-centered">
-      <div class="logo"></div>
-      <h1 class="title">Tuple</h1>
-      <div class="subtitle">Find Patterns for Points</div>
-      {{> board}}
+<body>
+  <div class="container">
+    <div class="logo"></div>
+    <h1 class="title">Tuple</h1>
+    <div class="subtitle">Find Patterns for Points</div>
+    {{> board}}
 
-    </div>
-  </body>
+
+  </div>
+</body>
 
 
 <template name="board">
-  <ul class="grid">
-    {{#each cards}}
-      {{> card}}
-    {{/each}}
-  </ul>
+  <div class="col-lg-4">
+    {{#each cards}} {{> card}} {{/each}}
+  </div>
 
   {{#if selectedName}}
-    <div class="details">
-      <div class="name">{{selectedName}}</div>
+  <div class="details">
+    <div class="name">{{selectedName}}</div>
 
-    </div>
+  </div>
   {{else}}
-    <div class="message">Click a card to select</div>
+  <div class="message">Click a card to select</div>
   {{/if}}
 </template>
 
 <template name="card">
-  <li class="{{selected}}">
+  <div class="span4 {{selected}}">
 
-    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="95px" height="62px" viewBox="0 0 95 62" enable-background="new 0 0 95 62" xml:space="preserve">  <image id="image0" width="95" height="62" x="0" y="0"
-        xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF8AAAA+CAMAAAB6Ojc4AAAABGdBTUEAALGPC/xhBQAAACBjSFJN
+    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="95px" height="62px" viewBox="0 0 95 62" enable-background="new 0 0 95 62" xml:space="preserve">
+      <image id="image0" width="95" height="62" x="0" y="0" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF8AAAA+CAMAAAB6Ojc4AAAABGdBTUEAALGPC/xhBQAAACBjSFJN
     AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAilBMVEX////+/v77+/v4+Pj8
     /Pz9+fn+8PDz3t71T0/0oKDct7fg3t7u7Oz3y8v9Dg7+AgL+AQH9AQH6AgLpGhr0NTW+fHzY19f3
     Jib1BgbQJyfFxMTz8vL9Bwf3CAi0sLD9BATZFBSZbm7//PyIVVWdnJz6CwvkExOYQECLhYXo6Oj8
@@ -55,5 +53,5 @@
     RVh0ZGF0ZTptb2RpZnkAMjAxMS0wMS0xMVQxOToxNzowNS0wNTowMGhXSpYAAAAASUVORK5CYII=" />
     </svg>
     <div class="name">{{name}}</div>
-  </li>
+  </div>
 </template>
