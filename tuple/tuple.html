@@ -6,34 +6,35 @@
 </head>
 
   <body>
-    <div class="container-fluid">
+    <div class="container centered">
       <div class="logo"></div>
       <h1 class="title">Tuple</h1>
       <div class="subtitle">Find Patterns for Points</div>
       {{> board}}
+
     </div>
   </body>
 
 
 <template name="board">
-  <div class="col-md-4 board">
+  <ol class="grid fixed-height">     <!-- jumbotron col-lg-4-centered board ||||| col-md-4 border card -->
     {{#each cards}}
       {{> card}}
     {{/each}}
-  </div>
+  </ol>
 
   {{#if selectedName}}
     <div class="details">
       <div class="name">{{selectedName}}</div>
-      <button class="inc">Add 5 points</button>
+
     </div>
   {{else}}
-    <div class="message">Click a card to select</div>
+    <div class="row message">Click a card to select</div>
   {{/if}}
 </template>
 
 <template name="card">
-  <li class="col-md-4 card {{selected}}">
+  <li class="module packagesItem {{selected}}">
     <span class="name">{{name}}</span>
 
     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="95px" height="62px" viewBox="0 0 95 62" enable-background="new 0 0 95 62" xml:space="preserve">  <image id="image0" width="95" height="62" x="0" y="0"
