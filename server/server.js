@@ -16,7 +16,7 @@ Meteor.startup(function () {
 });
 
 // Meteor.startup(function () {
-//   Cards.remove({});
+//   // Cards.remove({});
 //
 //   function card(color, shape, quant, fill, name) {
 //     this.color = color;
@@ -37,14 +37,24 @@ Meteor.startup(function () {
 //       for (var s = 0; s < this.shape.length; s++) {
 //         for (var q = 0; q < this.quant.length; q++) {
 //           for (var f = 0; f < this.fill.length; f++) {
-//             cards.push(new card(f + 1, this.color[c], this.shape[s], this.quant[q], this.fill[f]))
+//             Cards.push(new card(f + 1, this.color[c], this.shape[s], this.quant[q], this.fill[f]))
 //           }
 //         }
 //       }
 //     }
-//     return cards;
-//   }
-//
+//     return _.each(cards, function (card) {
+//       Cards.insert({
+//         color: cards.color,
+//         shape: cards.shape,
+//         quant: cards.quant,
+//         fill: cards.fill
+//       });
+//     });
+//   };
+// });
+
+
+
 //   if (Cards.find().count() === 0) {
 //     myDeck = new deck();
 //     _.each(myDeck, function (cards) {
@@ -59,7 +69,7 @@ Meteor.startup(function () {
 //   };
 // });
 
-
+//cards.push(new card(f + 1, this.color[c], this.shape[s], this.quant[q], this.fill[f]))
 
 
 // reference code--> http://devdojo.com/post/create-a-deck-of-cards-in-javascript
