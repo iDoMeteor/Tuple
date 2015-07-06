@@ -2,7 +2,8 @@ Template.board.helpers({
   cards: function () {
     return Cards.find({}, {
       sort: {
-        count: -1
+        count: -1,
+        name: 1
       },
       limit: 12
     })

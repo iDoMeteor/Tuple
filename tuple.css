@@ -27,7 +27,9 @@ html {
   box-sizing: border-box;
   background: #e2e2e2;
 }
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
@@ -46,7 +48,7 @@ body {
 .centered {
   margin: 0 auto;
 }
-.grid {
+.board {
   overflow: hidden;
   max-width: 800px;
   min-width: 800px;
@@ -107,7 +109,8 @@ span {
 .value {
   font-size: 2em
 }
-.message, .details {
+.message,
+.details {
   height: 200px;
   font-size: 2em;
   text-align: center;
