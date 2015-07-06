@@ -2,8 +2,7 @@ Template.board.helpers({
   cards: function () {
     return Cards.find({}, {
       sort: {
-        count: -1,
-        name: 1
+        _id: -1,
       },
       limit: 12
     })
@@ -18,7 +17,7 @@ Template.board.events({
   'click .inc': function () {
     Cards.update(Session.get("selectedCard"), {
       $inc: {
-        score: 5
+        score: 1
       }
     });
   }
