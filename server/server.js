@@ -15,32 +15,48 @@ Meteor.startup(function () {
   }
 });
 
-// Meteor.startup(function deck(color, shape, quant, fill) {
-//   this.color = ['r', 'b', 'g'];
-//   this.shape = ['x', 'y', 'z'];
-//   this.quant = ['1', '2', '3'];
-//   this.fill = ['empty', 'shaded', 'solid'];
-//   cards = []
-//   _.each(cards, function (name) {
+// Meteor.startup(function () {
+//   Cards.remove({});
+//
+//   function card(color, shape, quant, fill, name) {
+//     this.color = color;
+//     this.shape = shape;
+//     this.quant = quant;
+//     this.fill = fill;
+//     this.name = name;
+//   }
+//
+//   function deck() {
+//     this.color = ['red', 'green', 'blue'];
+//     this.shape = ['squiggle', 'oval', 'diamond'];
+//     this.quant = ['1', '2', '3'];
+//     this.fill = ['empty', 'striped', 'solid'];
+//     this.name = [];
+//     var cards = [];
 //     for (var c = 0; c < this.color.length; c++) {
 //       for (var s = 0; s < this.shape.length; s++) {
 //         for (var q = 0; q < this.quant.length; q++) {
 //           for (var f = 0; f < this.fill.length; f++) {
-//             cards.push(new card(n + 1, this.colors[c], this.shape[s], this.quant[q], this.fill[f]));
+//             cards.push(new card(f + 1, this.color[c], this.shape[s], this.quant[q], this.fill[f]))
 //           }
 //         }
 //       }
 //     }
-//     Cards.insert({
-//       name: name,
-//       score: 0,
-//       color: color,
-//       shape: shape,
-//       quant: quant,
-//       fill: fill
+//     return cards;
+//   }
 //
+//   if (Cards.find().count() === 0) {
+//     myDeck = new deck();
+//     _.each(myDeck, function (cards) {
+//       Cards.insert({
+//         score: 0,
+//         color: cards.color,
+//         shape: cards.shape,
+//         quant: cards.quant,
+//         fill: cards.fill
+//       });
 //     });
-//   });
+//   };
 // });
 
 
