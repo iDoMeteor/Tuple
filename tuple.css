@@ -66,7 +66,8 @@ body {
   right: 200px;
   height: 100px;
 }
-.score1 {
+
+/*.score1 {
   margin-top: 20px;
   height: 80%;
   text-align: center;
@@ -75,7 +76,8 @@ body {
   margin-top: 20px;
   height: 80%;
   text-align: center;
-}
+}*/
+
 .box {
   float: left;
   text-align: center;
@@ -85,6 +87,9 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+}
+.box:hover {
+  background-color: #9AB49A;
 }
 .fixed-gutter-width > .box {
   margin: 2.5px 2.5px;

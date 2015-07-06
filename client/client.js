@@ -8,14 +8,14 @@ if (Meteor.isClient) {
       });
     },
     selectedName: function () {
-      var card = Cards.findOne(Session.get("selectedPlayer"));
+      var card = Cards.findOne(Session.get("selectedCard"));
       return card && card.name;
     }
   });
 
   Template.board.events({
     'click .inc': function () {
-      Cards.update(Session.get("selectedPlayer"), {
+      Cards.update(Session.get("selectedCard"), {
         $inc: {
           score: 5
         }
@@ -25,13 +25,13 @@ if (Meteor.isClient) {
 
   Template.card.helpers({
     selected: function () {
-      return Session.equals("selectedPlayer", this._id) ? "selected" : '';
+      return Session.equals("selectedCards", this._id) ? "selected" : '';
     }
   });
 
   Template.card.events({
     'click': function () {
-      Session.set("selectedPlayer", this._id);
+      Session.set("selectedCard", this._id);
     }
   });
 };
