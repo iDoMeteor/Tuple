@@ -1,29 +1,33 @@
 <head>
   <title>tuple</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-  <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css"> </head>
+  <meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport">
+  <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css">
+</head>
 <!-- /////BEGIN BODY  -->
 
 <body>
   <div class="logo"></div>
   <h1 class="title">Tuple</h1>
   <div class="subtitle">Find Patterns for Points</div>
-  <div class="available-space"> {{> board}}
+  <div class="available-space">
+    {{> board}}
   </div>
 </body>
 <!-- ///////BEGIN TEMPLATES -->
 
 <template name="board">
-
-  <div class="scoreboardLeft"> PLAYER 1</div>
   <div class="board fixed-gutter-width fixed-column-width {{selected}}" id="details">
+    <div class="scoreboardLeft">
+      PLAYER 1</div>
+    <div class="scoreboardRight">
+      PLAYER 2
+    </div>
     {{#each cards}} {{> card}} {{/each}}
   </div>
-  <div class="scoreboardRight"> PLAYER 2 </div>
 
-  {{#if selectedName}}
+  {{#if selectedCard}}
   <div class="details">
-    <div class="name">{{selectedCard}}</div>
+    <div class="card">{{selectedCard}}</div>
   </div>
   {{else}}
   <div class="message">Click a card to select</div>

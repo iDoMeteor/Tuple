@@ -90,7 +90,7 @@ body {
   background-size: cover;
   background-position: center;
 }
-.box:hover {
+.box:active {
   background-color: #9AB49A;
 }
 .fixed-gutter-width > .box {
