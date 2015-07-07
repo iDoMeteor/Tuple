@@ -1,19 +1,18 @@
-Meteor.startup(function () {
-  Cards.remove({});
-  if (Cards.find().count() === 0) {
-    var names = ["Card 1", "Card 2", "Card 3", "Card 4", "Card 5", "Card 6", "Card 7", "Card 8", "Card 9", "Card 10", "Card 11", "Card 12", "Card 13"];
-    _.each(names, function (name) {
-      Cards.insert({
-        name: name,
-        score: 0,
-        color: 'x' | 'y' | 'z',
-        shape: 'x' | 'y' | 'z',
-        quant: 'x' | 'y' | 'z',
-        fill: 'x' | 'y' | 'z'
-      });
+Cards.remove({});
+if (Cards.find().count() === 0) {
+  var names = ["Card 1", "Card 2", "Card 3", "Card 4", "Card 5", "Card 6", "Card 7", "Card 8", "Card 9", "Card 10", "Card 11", "Card 12", "Card 13"];
+  _.each(names, function (name) {
+    Cards.insert({
+      name: name,
+      score: 0,
+      color: 'x' | 'y' | 'z',
+      shape: 'x' | 'y' | 'z',
+      quant: 'x' | 'y' | 'z',
+      fill: 'x' | 'y' | 'z'
     });
-  }
-});
+  });
+}
+
 
 // Meteor.startup(function () {
 //   // Cards.remove({});
@@ -70,8 +69,6 @@ Meteor.startup(function () {
 // });
 
 //cards.push(new card(f + 1, this.color[c], this.shape[s], this.quant[q], this.fill[f]))
-
-
 // reference code--> http://devdojo.com/post/create-a-deck-of-cards-in-javascript
 // function card(value, name, suit) {
 //   this.value = value;
