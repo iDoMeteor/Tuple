@@ -6,11 +6,13 @@ Meteor.startup( function deck() {
     this.shape = shape;
     this.quant = quant;
     this.fill = fill;
+    this.image = image;
   }
   this.colors = [ 'red', 'blue', 'green' ];
   this.shapes = [ 'squiggle', 'oval', 'diamond' ];
   this.quants = [ 'one', 'two', 'three' ];
   this.fills = [ 'empty', 'striped', 'solid' ];
+  this.image = [ 'url' ];
   this.name = [];
   var cards = [];
   for ( var c = 0; c < this.colors.length; c++ ) {
@@ -28,6 +30,7 @@ Meteor.startup( function deck() {
       shape: card.shape,
       quant: card.quant,
       fill: card.fill,
+      image: card.image,
       name: [ card.color, card.shape, card.quant, card.fill ]
     } );
   } );

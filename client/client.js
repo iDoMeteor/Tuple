@@ -1,9 +1,6 @@
 Template.board.helpers( {
   cards: function () {
     return Cards.find( {}, {
-      sort: {
-        _id: -1,
-      },
       limit: 12
     } )
   },

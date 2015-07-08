@@ -49,6 +49,7 @@ body {
   margin: 0 auto;
 }
 .board {
+  position: static;
   overflow: hidden;
   max-width: 800px;
   min-width: 800px;
@@ -90,14 +91,14 @@ body {
   background-size: cover;
   background-position: center;
 }
-.card:active {
-  background-color: #9AB49A;
-}
 .fixed-gutter-width > .card {
   margin: 2.5px 2.5px;
 }
 .fixed-column-width > .card {
   width: 195px;
+}
+.inc:active {
+  box-shadow: rgba(0, 0, 0, .3) 0 1px 3px 0 inset;
 }
 span {
   display: block;
@@ -117,4 +118,27 @@ span {
 }
 .svg {
   fill: #ffffff;
+}
+.details .name {
+  display: inline-block;
+  font-size: 1.5em;
+  font-weight: 300;
+  line-height: 2.25rem;
+  padding-left: 1.25rem;
+  vertical-align: middle;
+}
+.details .inc {
+  border-radius: 3em;
+  border: #eb5f3a 1px solid;
+  background: transparent;
+  color: #eb5f3a;
+  cursor: pointer;
+  float: right;
+  font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1;
+  margin: 0;
+  outline: none;
+  padding: 10px 30px;
+  transition: all 200ms ease-in;
 }
