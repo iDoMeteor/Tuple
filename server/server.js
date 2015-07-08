@@ -5,11 +5,11 @@ Meteor.startup(function () {
     _.each(names, function (name) {
       Cards.insert({
         name: name,
-        score: 0
-          // color: 'x' | 'y' | 'z',
-          // shape: 'x' | 'y' | 'z',
-          // quant: 'x' | 'y' | 'z',
-          // fill: 'x' | 'y' | 'z'
+        score: 0,
+        color: 'x' | 'y' | 'z',
+        shape: 'x' | 'y' | 'z',
+        quant: 'x' | 'y' | 'z',
+        fill: 'x' | 'y' | 'z'
       });
     });
   };
