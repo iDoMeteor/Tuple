@@ -1,36 +1,33 @@
-Template.board.helpers({
+Template.board.helpers( {
   cards: function () {
-    return Cards.find({}, {
+    return Cards.find( {}, {
       sort: {
         _id: -1,
       },
       limit: 12
-    })
+    } )
   },
   selectedCard: function () {
-    var card = Cards.findOne(Session.get("selectedCard"));
+    var card = Cards.findOne( Session.get( "selectedCard" ) );
     return card && card.name;
   }
-});
-
-Template.board.events({
+} );
+Template.board.events( {
   'click .inc': function () {
-    Cards.update(Session.get("selectedCard"), {
+    Cards.update( Session.get( "selectedCard" ), {
       $inc: {
         score: 1
       }
-    });
+    } );
   }
-});
-
-Template.card.helpers({
+} );
+Template.card.helpers( {
   selected: function () {
-    return Session.equals("selectedCards", this._id) ? "selected" : '';
+    return Session.equals( "selectedCards", this._id ) ? "selected" : '';
   }
-});
-
-Template.card.events({
+} );
+Template.card.events( {
   'click': function () {
-    Session.set("selectedCard", this._id);
+    Session.set( "selectedCard", this._id );
   }
-});
+} );

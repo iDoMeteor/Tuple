@@ -1,25 +1,77 @@
-Meteor.startup(function () {
-  Cards.remove({});
-  if (Cards.find().count() === 0) {
-    var names = ["Card 1", "Card 2", "Card 3", "Card 4", "Card 5", "Card 6", "Card 7", "Card 8", "Card 9", "Card 10", "Card 11", "Card 12", "Card 13"];
-    _.each(names, function (name) {
-      Cards.insert({
-        name: name,
-        score: 0,
-        color: 'x' | 'y' | 'z',
-        shape: 'x' | 'y' | 'z',
-        quant: 'x' | 'y' | 'z',
-        fill: 'x' | 'y' | 'z'
-      });
-    });
-  };
-});
+Meteor.startup( function deck() {
+  Cards.remove( {} );
 
-
+  function card( color, shape, quant, fill, name ) {
+    this.color = color;
+    this.shape = shape;
+    this.quant = quant;
+    this.fill = fill;
+  }
+  this.colors = [ 'red', 'blue', 'green' ];
+  this.shapes = [ 'squiggle', 'oval', 'diamond' ];
+  this.quants = [ 'one', 'two', 'three' ];
+  this.fills = [ 'empty', 'striped', 'solid' ];
+  this.name = [];
+  var cards = [];
+  for ( var c = 0; c < this.colors.length; c++ ) {
+    for ( var s = 0; s < this.shapes.length; s++ ) {
+      for ( var q = 0; q < this.quants.length; q++ ) {
+        for ( var f = 0; f < this.fills.length; f++ ) {
+          cards.push( new card( this.colors[ c ], this.shapes[ s ], this.quants[ q ], this.fills[ f ] ) );
+        }
+      }
+    }
+  }
+  _.each( cards, function ( card ) {
+    Cards.insert( {
+      color: card.color,
+      shape: card.shape,
+      quant: card.quant,
+      fill: card.fill,
+      name: [ card.color, card.shape, card.quant, card.fill ]
+    } );
+  } );
+} );
+// Meteor.startup(function () {
+//   Cards.remove({});
+//   if (Cards.find().count() === 0) {
+//     var names = ["Card 1", "Card 2", "Card 3", "Card 4", "Card 5", "Card 6", "Card 7", "Card 8", "Card 9", "Card 10", "Card 11", "Card 12", "Card 13"];
+//     _.each(names, function (name) {
+//       Cards.insert({
+//         name: name,
+//         attr: (this.color + this.score + this.shape + this.quant + this.fill),
+//         score: 0,
+//         color: 'x' | 'y' | 'z',
+//         shape: 'x' | 'y' | 'z',
+//         quant: 'x' | 'y' | 'z',
+//         fill: 'x' | 'y' | 'z'
+//       });
+//     });
+//   };
+// });
 //
-
-
+// deck = function deck() {
+//   var cards = [];
+//   for (var c = 0; c < this.color.length; c++) {
+//     for (var s = 0; s < this.shape.length; s++) {
+//       for (var q = 0; q < this.quant.length; q++) {
+//         for (var f = 0; f < this.fill.length; f++) {
+//           cards.push(new card(f + 1, this.color[c], this.suits[s], this.suits[q], this.suits[f]));
+//         }
+//       }
+//     }
+//   }
+//   _.each(cards, function (name) {
+//     Cards.insert({
+//       name: (this.color, this.shape, this.quant, this.fill)
+//     });
+//   });
+//
+// };
 //cards.push(new card(f + 1, this.color[c], this.shape[s], this.quant[q], this.fill[f]))
+//
+//
+//
 // reference code--> http://devdojo.com/post/create-a-deck-of-cards-in-javascript
 // function card(value, name, suit) {
 //   this.value = value;
