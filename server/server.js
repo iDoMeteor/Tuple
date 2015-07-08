@@ -38,43 +38,6 @@ Meteor.startup( function deck() {
     } );
   } );
 } );
-// Meteor.startup(function () {
-//   Cards.remove({});
-//   if (Cards.find().count() === 0) {
-//     var names = ["Card 1", "Card 2", "Card 3", "Card 4", "Card 5", "Card 6", "Card 7", "Card 8", "Card 9", "Card 10", "Card 11", "Card 12", "Card 13"];
-//     _.each(names, function (name) {
-//       Cards.insert({
-//         name: name,
-//         attr: (this.color + this.score + this.shape + this.quant + this.fill),
-//         score: 0,
-//         color: 'x' | 'y' | 'z',
-//         shape: 'x' | 'y' | 'z',
-//         quant: 'x' | 'y' | 'z',
-//         fill: 'x' | 'y' | 'z'
-//       });
-//     });
-//   };
-// });
-//
-// deck = function deck() {
-//   var cards = [];
-//   for (var c = 0; c < this.color.length; c++) {
-//     for (var s = 0; s < this.shape.length; s++) {
-//       for (var q = 0; q < this.quant.length; q++) {
-//         for (var f = 0; f < this.fill.length; f++) {
-//           cards.push(new card(f + 1, this.color[c], this.suits[s], this.suits[q], this.suits[f]));
-//         }
-//       }
-//     }
-//   }
-//   _.each(cards, function (name) {
-//     Cards.insert({
-//       name: (this.color, this.shape, this.quant, this.fill)
-//     });
-//   });
-//
-// };
-//cards.push(new card(f + 1, this.color[c], this.shape[s], this.quant[q], this.fill[f]))
 //
 //
 //
