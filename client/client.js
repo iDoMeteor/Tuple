@@ -1,11 +1,15 @@
 Template.board.helpers( {
   cards: function () {
     return Cards.find( {}, {
+      sort: {
+        _id: -1,
+      },
       limit: 12
     } )
   },
   selectedCard: function () {
     var card = Cards.findOne( Session.get( "selectedCard" ) );
+    var score = Cards.findOne( Session.get( "selectedCard" ) );
     return card && card.name;
   }
 } );
