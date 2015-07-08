@@ -41,55 +41,39 @@ body {
   font: 1em Lato;
 }
 .available-space {
-  max-width: 1000px;
+  width: 80%;
   height: 100%;
   margin: 0 auto;
 }
-.centered {
+
+/*.centered {
   margin: 0 auto;
-}
+}*/
+
 .board {
   position: static;
   overflow: hidden;
   max-width: 800px;
-  min-width: 800px;
-  width: 100%;
+  min-width: 700px;
   margin: 0 auto;
-  padding: 0;
+  padding: 10;
 }
 .scoreboardLeft {
-  position: fixed;
-  top: 40%;
-  left: 200px;
-  height: 100px;
+  vertical-align: middle;
+  float: left;
+  margin-left: 4em;
+  height: 100%;
 }
 .scoreboardRight {
-  position: fixed;
-  top: 40%;
-  right: 200px;
-  height: 100px;
+  float: right;
+  margin-right: 4em;
+  height: 100%;
+  margin: 0 auto;
+  vertical-align: middle;
 }
-
-/*.score1 {
-  margin-top: 20px;
-  height: 80%;
-  text-align: center;
-}
-.score2 {
-  margin-top: 20px;
-  height: 80%;
-  text-align: center;
-}*/
-
 .card {
   float: left;
   text-align: center;
-  /*color: #ffffff;*/
-  /*background: #9AB49A;*/
-  /*background: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOC4xLjEsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgMTAyNCA3NjgiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDEwMjQgNzY4IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGQ9Ik02MjcuNywyMzRDNjI3LjcsMjM0LDYyNy43LDIzNCw2MjcuNywyMzRjLTAuMSwwLTAuMS0wLjItMC4xLTAuMmMtNS41LTQxLjQtNzUuMi03NS0xMTYuNy03NWMtNDEuNCwwLTM4LjgsMzMuNi0zMy4zLDc1DQoJYzAuMSwwLjksMC4zLDEuNywwLjUsMi42YzE0LjIsOTguMy05OC4zLDE5Ni42LTg0LjIsMjk0LjljMC4xLDAuOSwwLjIsMS43LDAuMywyLjZjNS41LDQxLjQsNzUuMiw3NSwxMTYuNyw3NQ0KCWM0MS4yLDAsMzguNy0zMy44LDMzLjQtNzQuOGMwLDAsMCwwLDAuMSwwQzUyNy41LDQzNCw2NDQuMiwzMzQsNjI3LjcsMjM0eiIvPg0KPC9zdmc+DQo=");*/
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
 }
 .fixed-gutter-width > .card {
   margin: 2.5px 2.5px;
@@ -117,11 +101,11 @@ span {
   text-align: center;
   overflow: hidden;
 }
-.svg {
-  color: yellow;
-}
 .score {
   display: block;
   height: 150px;
   font-size: 2em;
+}
+.red {
+  border: yellow;
 }

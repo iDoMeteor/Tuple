@@ -1,13 +1,7 @@
 <template name="board">
   <div class="board fixed-gutter-width fixed-column-width {{selected}}" id="details">
-    <div class="scoreboardLeft">
-      PLAYER 1</div>
-    <div class="scoreboardRight">
-      PLAYER 2
-    </div>
     {{#each cards}} {{> card}} {{/each}}
   </div>
-
   {{#if selectedCard}}
   <div class="details">
     <div class="name">{{selectedCard}}</div>
