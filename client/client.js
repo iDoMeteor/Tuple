@@ -9,7 +9,6 @@ Template.board.helpers( {
   },
   selectedCard: function () {
     var card = Cards.findOne( Session.get( "selectedCard" ) );
-    var score = Cards.findOne( Session.get( "selectedCard" ) );
     return card && card.name;
   }
 } );
