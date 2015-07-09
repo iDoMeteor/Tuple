@@ -3,10 +3,10 @@
     {{#each cards}} {{> card}} {{/each}}
   </div>
   {{#if selectedCard}}
-  <div class="details">
+  <div class="details" style="text-align: center">
     <div class="name">{{selectedCard}}</div>
   </div>
   {{else}}
-  <div class="message">Click a card to select</div>
+  <div class="message" style="text-align: center">Click a card to select</div>
   {{/if}}
 </template>

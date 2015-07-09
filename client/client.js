@@ -5,7 +5,7 @@ Template.board.helpers( {
         _id: -1,
       },
       limit: 12
-    } )
+    } );
   },
   selectedCard: function () {
     var card = Cards.findOne( Session.get( "selectedCard" ) );
@@ -23,8 +23,12 @@ Template.board.events( {
 } );
 Template.card.helpers( {
   selected: function () {
-    return Session.equals( "selectedCards", this._id ) ? "selected" : '';
-  }
+      return Session.equals( "selectedCards", this._id ) ? "selected" : '';
+    }
+    // onRendered: function () {
+    //   // s = Snap( 150, 150 );
+    //   var s = Snap( "#svg" );
+    // }
 } );
 Template.card.events( {
   'click': function () {
