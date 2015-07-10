@@ -1,3 +1,4 @@
+Meteor.subscribe( "cards" );
 Template.board.helpers( {
   cards: function () {
     return Cards.find( {}, {
@@ -26,7 +27,16 @@ Template.card.helpers( {
     return Session.equals( "selectedCards", this._id ) ? "selected" : '';
   },
   cardColor: function () {
-    return Session.get( "color" ), {};
+    if ( card.color === 'r' ) {
+      Session.set( "cardColor", 'color1' );
+    }
+    else if ( card.color === 'g' ) {
+      Session.set( "cardColor", 'color2' );
+    }
+    else if ( card.color === 'b' ) {
+      Session.set( "cardColor", 'color3' );
+    }
+    return Session.set( "cardColor" ), {};
   }
 } );
 Template.card.events( {

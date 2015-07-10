@@ -68,6 +68,15 @@ html {
   vertical-align: middle;
   width: 33%;
 }
+color1 {
+  fill: red;
+}
+color1 {
+  fill: blue;
+}
+color1 {
+  fill: green;
+}
 
 }
 .fixed-gutter-width > .card {
@@ -91,10 +100,3 @@ html {
 message {
   text-align: center;
 }
-
-/*.details {
-  font-size: 1em;
-  overflow: hidden;
-  text-align: center;
-  margin-top: 50px;
-}*/

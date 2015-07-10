@@ -3,11 +3,11 @@
     <!-- <svg class="symbol" style="red" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 768">
       <path d="M511.9 184l-100 200 100 200 100-200" />
     </svg> -->
-    {{#each cards}}
-     {{> svgType this}}
-   {{/each}}
-    <!-- <svg version="1.0" xmlns="http://www.w3.org/2000/svg"  preserveAspectRatio="xMidYMid meet">
-      <g transform="translate(0,140) scale(0.1,-.1) rotate(95, 500, 500)">
+    {{#each svgTypes}}
+     {{> svgType}}
+    {{/each}}
+  <!--  <svg version="1.0" xmlns="http://www.w3.org/2000/svg"  preserveAspectRatio="xMidYMid meet">
+       <g transform="translate(0,140) scale(0.1,-.1) rotate(95, 500, 500)">
         <path d="M420 771 c-159 -52 -231 -189 -169 -319 53 -109 162 -107 205 4 31
     81 72 80 124 -5 68 -110 221 -162 332 -113 90 39 137 117 138 222 0 163 -104
     224 -187 110 -67 -93 -70 -96 -90 -84 -10 6 -28 28 -40 49 -52 92 -122 136
