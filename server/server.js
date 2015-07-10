@@ -38,6 +38,28 @@ Meteor.startup( function deck() {
     } );
   } );
 } );
+// PUT IN CLIENT HELPERS?
+// Game.prototype.verifySet = function ( c0, c1, c2 ) {
+//   var s = c0.number + c1.number + c2.number;
+//   if ( s != 0 && s != 3 && s != 6 ) return false;
+//   s = c0.color + c1.color + c2.color;
+//   if ( s != 0 && s != 3 && s != 6 ) return false;
+//   s = c0.shape + c1.shape + c2.shape;
+//   if ( s != 0 && s != 3 && s != 6 ) return false;
+//   s = c0.shading + c1.shading + c2.shading;
+//   if ( s != 0 && s != 3 && s != 6 ) return false;
+//   return true;
+// }
+// 
+// function Card( idx ) {
+//   this.number = idx % 3;
+//   idx = Math.floor( idx / 3 );
+//   this.color = idx % 3;
+//   idx = Math.floor( idx / 3 );
+//   this.shape = idx % 3;
+//   idx = Math.floor( idx / 3 );
+//   this.shading = idx % 3;
+// }
 //
 //
 //
