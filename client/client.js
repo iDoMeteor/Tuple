@@ -23,12 +23,11 @@ Template.board.events( {
 } );
 Template.card.helpers( {
   selected: function () {
-      return Session.equals( "selectedCards", this._id ) ? "selected" : '';
-    }
-    // onRendered: function () {
-    //   // s = Snap( 150, 150 );
-    //   var s = Snap( "#svg" );
-    // }
+    return Session.equals( "selectedCards", this._id ) ? "selected" : '';
+  },
+  cardColor: function () {
+    return Session.get( "color" ), {};
+  }
 } );
 Template.card.events( {
   'click': function () {
