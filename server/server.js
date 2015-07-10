@@ -50,7 +50,7 @@ Meteor.startup( function deck() {
 //   if ( s != 0 && s != 3 && s != 6 ) return false;
 //   return true;
 // }
-// 
+// NEED TO APPLY THIS IDX INDEX TO MY CARD LOGIC
 // function Card( idx ) {
 //   this.number = idx % 3;
 //   idx = Math.floor( idx / 3 );
