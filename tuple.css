@@ -53,8 +53,13 @@ html {
   margin: 0 auto;
   padding: 10;
 }
-.card,
-svg {
+
+/*.card,
+.svgIcon,
+.svg-color1,
+.use */
+
+.card {
   float: left;
   text-align: center;
   margin: 0 auto;
@@ -64,11 +69,13 @@ svg {
   border: 1px solid #000;
   fill: orange;
 }
+.use {
+  width: 33%;
+  height: 25%;
+  fill: orange;
+}
 
 /*color1 {
-  fill: red;
-}
-color1 {
   fill: blue;
 }
 color1 {

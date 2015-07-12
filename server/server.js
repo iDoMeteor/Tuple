@@ -9,7 +9,7 @@ Meteor.startup( function deck() {
     this.image = image;
     this.score = score;
   }
-  this.colors = [ 'r', 'g', 'b' ];
+  this.colors = [ 'red', 'blue', 'brown' ];
   this.shapes = [ 's', 'o', 'd' ];
   this.quants = [ '1', '2', '3' ];
   this.fills = [ 'e', 'h', 'f' ];
@@ -34,7 +34,7 @@ Meteor.startup( function deck() {
       fill: card.fill,
       image: card.image,
       score: card.score,
-      name: [ card.color, card.shape, card.quant, card.fill ]
+      name: [ card.color + card.shape + card.quant + card.fill ]
     } );
   } );
 } );

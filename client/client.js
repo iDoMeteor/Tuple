@@ -27,16 +27,16 @@ Template.card.helpers( {
     return Session.equals( "selectedCards", this._id ) ? "selected" : '';
   },
   cardColor: function () {
-    if ( card.color === 'r' ) {
-      Session.set( "cardColor", 'color1' );
+    if ( card.color === 'red' ) {
+      Session.set( "svgColor", 'color1' );
     }
-    else if ( card.color === 'g' ) {
-      Session.set( "cardColor", 'color2' );
+    else if ( card.color === 'blue' ) {
+      Session.set( "svgColor", 'color2' );
     }
-    else if ( card.color === 'b' ) {
-      Session.set( "cardColor", 'color3' );
+    else if ( card.color === 'brown' ) {
+      Session.set( "svgColor", 'color3' );
     }
-    return Session.set( "cardColor" ), {};
+    return Session.set( "svgColor" ), {};
   }
 } );
 Template.card.events( {
@@ -44,3 +44,14 @@ Template.card.events( {
     Session.set( "selectedCard", this._id );
   }
 } );
+// Template.svgIcon.helpers({
+//   width: function(){
+//
+//   },
+//   height: function(){
+//
+//   },
+//   destroyed: function(){
+//
+//   },
+// });
