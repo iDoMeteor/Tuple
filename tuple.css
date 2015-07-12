@@ -34,7 +34,8 @@ html {
   box-sizing: border-box;
   background: #e2e2e2;
 }
-*,
+
+/**,
 *:before,
 *:after {
   box-sizing: inherit;
@@ -49,29 +50,34 @@ html {
   position: static;
   overflow: hidden;
   max-width: 60%;
-  /*min-width: 580px;*/
+  min-width: 580px;
   margin: 0 auto;
   padding: 10;
-}
+}*/
+
 
 /*.card,
 .svgIcon,
 .svg-color1,
 .use */
 
-.object >svg {
+
+/*.object >svg {
   fill: red;
 }
 .svgIcon {
   width: 33%;
   height: 25%;
-}
+}*/
+
 .svg-color1 {
-  width: 33%;
-  height: 25%;
   fill: red;
 }
 .card {
+  border: 1px solid #000;
+}
+
+/*.card {
   float: left;
   text-align: center;
   margin: 0 auto;
@@ -79,7 +85,13 @@ html {
   min-width: 33%;
   min-height: 25%;
   border: 1px solid #000;
-}
+}*/
+
+
+/*.card>.div>.inc {
+  fill: orange;
+}*/
+
 
 /*color1 {
   fill: blue;
@@ -88,12 +100,14 @@ color1 {
   fill: green;
 }*/
 
-.fixed-gutter-width > .card {
+
+/*.fixed-gutter-width > .card {
   margin: 2.5px 2.5px;
 }
 .fixed-column-width > .card {
   width: 195px;
-}
+}*/
+
 
 /*.inc {
   max-width: 100%;
@@ -101,9 +115,11 @@ color1 {
   color: blue;
 }*/
 
-.inc:active {
+
+/*.inc:active {
   box-shadow: rgba(0, 0, 0, .3) 0 1px 3px 0 inset;
-}
+}*/
+
 .name {
   font-size: 1em;
   text-align: center;

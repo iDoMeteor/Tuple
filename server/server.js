@@ -32,7 +32,7 @@ Meteor.startup( function deck() {
       shape: card.shape,
       quant: card.quant,
       fill: card.fill,
-      image: card.image,
+      image: card.shape + '.svg',
       score: card.score,
       name: [ card.color + card.shape + card.quant + card.fill ]
     } );

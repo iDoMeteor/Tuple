@@ -46,7 +46,7 @@ Template.card.events( {
 } );
 // Template.svgIcon.helpers({
 //   width: function(){
-//
+//     if (card.Shape)
 //   },
 //   height: function(){
 //

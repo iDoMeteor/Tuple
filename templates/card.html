@@ -1,9 +1,10 @@
 <template name="card">
-  <div class="card">
-    {{> svgIcon svgColor = card.Color}}
-    <!-- {{> svgIcon svgShape = card.Shape}} -->
-  </div>
+  <div class="col-md-3">
+    <div class="panel-body">
+      {{#each card.Quant}} {{/each}} {{> svgIcon svgShape = card.Shape}} {{> svgIcon svgQuant = card.Quant}} {{> svgIcon svgFill = card.Fill}}}
 
+    </div>
+  </div>
 </template>
 
 <!-- <svg xmlns="http://www.w3.org/2000/svg ">
