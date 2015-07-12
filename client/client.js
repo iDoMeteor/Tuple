@@ -1,5 +1,11 @@
 Meteor.subscribe( "cards" );
 Template.board.helpers( {
+  svgColor: function () {
+    return card.color;
+  },
+  svgShape: function () {
+    return card.shape;
+  },
   cards: function () {
     return Cards.find( {}, {
       sort: {
@@ -25,18 +31,6 @@ Template.board.events( {
 Template.card.helpers( {
   selected: function () {
     return Session.equals( "selectedCards", this._id ) ? "selected" : '';
-  },
-  cardColor: function () {
-    if ( card.color === 'red' ) {
-      Session.set( "svgColor", 'color1' );
-    }
-    else if ( card.color === 'blue' ) {
-      Session.set( "svgColor", 'color2' );
-    }
-    else if ( card.color === 'brown' ) {
-      Session.set( "svgColor", 'color3' );
-    }
-    return Session.set( "svgColor" ), {};
   }
 } );
 Template.card.events( {
@@ -44,14 +38,6 @@ Template.card.events( {
     Session.set( "selectedCard", this._id );
   }
 } );
-// Template.svgIcon.helpers({
-//   width: function(){
-//     if (card.Shape)
-//   },
-//   height: function(){
+// Template.svgIcon.helpers( {
 //
-//   },
-//   destroyed: function(){
-//
-//   },
-// });
+// } );

@@ -1,9 +1,7 @@
 <template name="card">
-  <div class="col-md-3">
-    <div class="panel-body">
-      {{#each card.Quant}} {{/each}} {{> svgIcon svgShape = card.Shape}} {{> svgIcon svgQuant = card.Quant}} {{> svgIcon svgFill = card.Fill}}}
-
-    </div>
+  <div class="card col-lg-3">
+      <object class="svgIcon panel-body" type="image/svg+xml" data={{svgShape}}></object>
+      <!-- {{> UI.dynamic template=svgIcon data=svgShape}} -->
   </div>
 </template>
 
