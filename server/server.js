@@ -10,7 +10,7 @@ Meteor.startup( function deck() {
     this.score = score;
   }
   this.colors = [ 'red', 'blue', 'brown' ];
-  this.shapes = [ 's', 'o', 'd' ];
+  this.shapes = [ 'shape1', 'shape2', 'shape3' ];
   this.quants = [ '1', '2', '3' ];
   this.fills = [ 'e', 'h', 'f' ];
   this.image = [ 'url' ];
