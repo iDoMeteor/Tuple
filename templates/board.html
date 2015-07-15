@@ -1,6 +1,16 @@
 <template name="board">
-  <div class="col-md-4 board {{selected}}" id="details">
-    {{#each cards}} {{> card}} {{/each}}
+  <div class="container-fluid board {{selected}}" id="details">
+    <div class="row row-centered">
+
+      {{#each cards}}
+        <div class="col-lg-3 col-centered">{{> card}}
+          <img class="pod" src="shape1.svg" alt="" />
+          <!-- <img class="pod" src="shape2.svg" alt="" />
+          <img class="pod" src="shape3.svg" alt="" /> -->
+        </div>
+        {{/each}}
+  </div>
+
   </div>
 
   {{#if selectedCard}}
@@ -10,6 +20,5 @@
   {{else}}
   <div class="message" style="text-align: center">Click a card to select</div>
   {{/if}}
-
 
 </template>
