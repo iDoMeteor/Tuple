@@ -3,9 +3,15 @@ Template.board.helpers( {
   svgColor: function () {
     return card.color;
   },
-  svgShape: function () {
-    return card.shape;
-  },
+  // loadSVG: function () {
+  //   var mySVGsToInject = document.querySelectorAll( '.svg' );
+  //   var injectorOptions = {
+  //     evalScripts: 'once'
+  //   };
+  //   SVGInjector( mySVGsToInject, injectorOptions );
+  //
+  //   loadSVG();
+  // },
   cards: function () {
     return Cards.find( {}, {
       sort: {
