@@ -57,3 +57,6 @@ message {
   margin: 0 auto;
   display: inline;
 }
+.card {
+  border: 2px black;
+}
