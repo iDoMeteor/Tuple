@@ -1,42 +1,12 @@
 Meteor.startup( function deck() {
   Cards.remove( {} );
-
-  function card( color, shape, quant, fill, name ) {
-    this.color = color;
-    this.shape = shape;
-    this.quant = quant;
-    this.fill = fill;
-    this.image = image;
-    this.score = score;
-  }
-  this.colors = [ 'red', 'blue', 'brown' ];
-  this.shapes = [ 'shape1', 'shape2', 'shape3' ];
-  this.quants = [ '1', '2', '3' ];
-  this.fills = [ 'e', 'h', 'f' ];
-  this.image = [ 'url' ];
-  this.name = [];
-  this.score = 0;
-  var cards = [];
-  for ( var c = 0; c < this.colors.length; c++ ) {
-    for ( var s = 0; s < this.shapes.length; s++ ) {
-      for ( var q = 0; q < this.quants.length; q++ ) {
-        for ( var f = 0; f < this.fills.length; f++ ) {
-          cards.push( new card( this.colors[ c ], this.shapes[ s ], this.quants[ q ], this.fills[ f ] ) );
-        }
-      }
-    }
-  }
-  _.each( cards, function ( card ) {
-    Cards.insert( {
-      color: card.color,
-      shape: card.shape,
-      quant: card.quant,
-      fill: card.fill,
-      image: card.shape + '.svg',
-      score: card.score,
-      name: [ card.color + card.shape + card.quant + card.fill ]
+  if ( Meteor.isServer ) {
+    Meteor.publish( "cards", function () {
+      return Cards.find( {}, {
+        limit: 12
+      } )
     } );
-  } );
+  };
 } );
 // PUT IN CLIENT HELPERS?
 // Game.prototype.verifySet = function ( c0, c1, c2 ) {

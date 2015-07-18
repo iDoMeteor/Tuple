@@ -13,12 +13,7 @@ Template.board.helpers( {
   //   loadSVG();
   // },
   cards: function () {
-    return Cards.find( {}, {
-      sort: {
-        _id: -1,
-      },
-      limit: 12
-    } );
+    return Cards.find( {} )
   },
   selectedCard: function () {
     var card = Cards.findOne( Session.get( "selectedCard" ) );
