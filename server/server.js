@@ -2,11 +2,9 @@ Meteor.startup( function deck() {
   Cards.remove( {} );
   if ( Meteor.isServer ) {
     Meteor.publish( "cards", function () {
-      return Cards.find( {}, {
-        limit: 12
-      } )
+      return Cards.find( {} )
     } );
-  };
+  }
 } );
 // PUT IN CLIENT HELPERS?
 // Game.prototype.verifySet = function ( c0, c1, c2 ) {

@@ -13,7 +13,9 @@ Template.board.helpers( {
   //   loadSVG();
   // },
   cards: function () {
-    return Cards.find( {} )
+    return Cards.find( {}, {
+      limit: 12
+    } )
   },
   selectedCard: function () {
     var card = Cards.findOne( Session.get( "selectedCard" ) );
