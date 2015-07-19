@@ -5,12 +5,6 @@ Template.board.helpers( {
       limit: 12
     } );
   },
-  svgColor: function () {
-    return card.color;
-  },
-  svgShape: function () {
-    return card.shape;
-  },
   selectedCard: function () {
     var card = Cards.findOne( Session.get( "selectedCard" ) );
     return card && card.name;
@@ -29,12 +23,21 @@ Template.card.helpers( {
   selected: function () {
     return Session.equals( "selectedCards", this._id ) ? "selected" : '';
   }
+
 } );
 Template.card.events( {
   'click': function () {
     Session.set( "selectedCard", this._id );
   }
 } );
-// Template.svgIcon.helpers( {
-//
-// } );
+
+Template.svgShape.helpers( {
+  shape: function () {
+    return card.shape;
+  }
+} );
+Template.svgColor.helpers( {
+  color: function () {
+    return card.color;
+  }
+} );
