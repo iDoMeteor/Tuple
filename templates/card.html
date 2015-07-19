@@ -1,5 +1,16 @@
 <template name="card">
-  <div class="pod col-lg-3">
-    {{> UI.dynamic template=svgShape}}
-  </div>
+  <svg class="card" xmlns="http://www.w3.org/2000/svg">
+    {{#each card}}
+      {{#if card.shape = shape1}}
+        {{> shape1}}
+        {{else}}
+        {{> shape2}}
+      {{/if}}
+    {{/each}}
+
+  </svg>
+
+<!-- I'm the card template -->
 </template>
+
+<!-- {{> UI.dynamic template=svgIcon}} -->
