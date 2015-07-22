@@ -24,8 +24,8 @@ Template.card.helpers( {
     return Session.equals( "selectedCards", this._id ) ? "selected" : '';
   },
   svgShape: function () {
-    svgShape = card.shape;
-    return svgShape;
+    var card = Cards.find( {} );
+    return card && card.shape;
   },
   svgColor: function () {
     svgColor = card.color;
@@ -36,6 +36,9 @@ Template.card.helpers( {
 Template.card.events( {
   'click': function () {
     Session.set( "selectedCard", this._id );
+  },
+  'rendered': function () {
+    Session.set( "svgShape", this._id );
   }
 
 } );
