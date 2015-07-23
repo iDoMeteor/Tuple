@@ -6,6 +6,5 @@
 
 meteor-platform
 insecure
-twbs:bootstrap
 meteortoys:allthings
-johnantoni:meteor-svginjector
+twbs:bootstrap
