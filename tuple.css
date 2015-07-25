@@ -3,7 +3,7 @@ body {
   font: 1em Lato;
 }
 #shape1 {
-  fill: tomato;
+  margin: 0 auto;
   text-align: center;
 }
 .flex-container {
@@ -21,7 +21,7 @@ body {
 .flex-item {
   background: #e2e2e2;
   padding: 5px;
-  width: 200px;
+  width: 150px;
   height: 150px;
   margin-top: 10px;
   line-height: 150px;
@@ -33,8 +33,9 @@ body {
 .svg-container {
   padding: 0;
   margin: 0 auto;
-  max-height: 130px;
-  max-width: 33%;
+  text-align: center;
+  height: 140px;
+  width: 33%;
   list-style: none;
   display: -webkit-box;
   display: -moz-box;
