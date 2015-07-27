@@ -1,4 +1,22 @@
 @import url(http://fonts.googleapis.com/css?family=Lato);
+
+/*// first we set descriptive variables:
+$darkgrey: #333333;
+$blue: #001eff;
+
+// then we set functional variables:
+$text_color: $darkgrey;
+$link_color: $lightblue;
+$border_color: $lightblue;
+
+.myClass{
+  color: $text_color;
+  border-color: $border_color;
+}
+a{
+  color: $link_color;
+}*/
+
 $offwhite: #e2e2e2;
 body {
   font: 1em Lato;
