@@ -1,8 +1,5 @@
 *.swo
 *.swp
 *~
-.meteor/local
+.meteor/**/*
 .gitignore
-.id
-.meteor/platforms
-.meteor/packages
