@@ -8,6 +8,10 @@ Template.board.helpers( {
   selectedCard: function () {
     var card = Cards.findOne( Session.get( "selectedCard" ) );
     return card && card.name;
+  },
+  cardShape: function () {
+    var shape = Cards.find( Session.get( "cardShape" ) );
+    return card && card.shape;
   }
 } );
 Template.board.events( {
@@ -21,16 +25,12 @@ Template.board.events( {
 } );
 Template.card.helpers( {
   selected: function () {
-    return Session.equals( "selectedCards", this._id ) ? "selected" : '';
-  },
-  svgShape: function () {
-    var card = Cards.find( {} );
-    return card && card.shape;
-  },
-  svgColor: function () {
-    svgColor = card.color;
-    return svgColor;
-  }
+      return Session.equals( "selectedCards", this._id ) ? "selected" : '';
+    }
+    // svgShape: function () {
+    //   return Session.equals( "svgShape", this.shape );
+    // var card = Cards.find( {} );
+    // return card && card.shape;
 } );
 
 Template.card.events( {
@@ -38,7 +38,7 @@ Template.card.events( {
     Session.set( "selectedCard", this._id );
   },
   'rendered': function () {
-    Session.set( "svgShape", this._id );
+    Session.set( "cardShape", this.shape );
   }
 
 } );

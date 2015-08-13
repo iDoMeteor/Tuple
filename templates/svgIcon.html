@@ -1,9 +1,17 @@
 <template name="svgIcon">
-  {{#if this.svgShape = shape1}} {{> shape1}} {{/if}}
-  <!-- {{#if svgShape = shape2}} {{> shape2}} {{/if}} -->
-  <!-- {{#if svgShape = shape3}} {{> shape3}} {{/if}} -->
+  {{#if svgShape = shape1}}
+    {{> shape1}}
+  {{/if}}
 
-  <!-- I'm the svgIcon template -->
+  {{#if svgShape = shape2}}
+    {{> shape2}}
+  {{/if}}
+
+  {{#if svgShape = shape3}}
+    {{> shape3}}
+  {{/if}}
+
+<!-- I'm the svgIcon template -->
 </template>
 
 <!-- <object class="svgIcon" type="image/svg+xml" data={{svgShape}} fill={{svgColor}}></object> -->
