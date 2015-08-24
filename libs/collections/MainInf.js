@@ -3,8 +3,8 @@
  */
 
 
-StStopC = new Mongo.Collection();
-CScore = new Mongo.Collection();
+StStopC = new Mongo.Collection(null);
+CScore = new Mongo.Collection(null);
 if (StStopC.find().count() == 0) {
   StStopC.insert({ind:0, msg:"Start Game", st:0});
   //console.log(DeskCardsEvents);
