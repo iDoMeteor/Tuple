@@ -27,10 +27,6 @@ Template.card.helpers( {
   selected: function () {
       return Session.equals( "selectedCards", this._id ) ? "selected" : '';
     }
-    // svgShape: function () {
-    //   return Session.equals( "svgShape", this.shape );
-    // var card = Cards.find( {} );
-    // return card && card.shape;
 } );
 
 Template.card.events( {
@@ -40,5 +36,10 @@ Template.card.events( {
   'rendered': function () {
     Session.set( "cardShape", this.shape );
   }
+
+  // svgShape: function () {
+  //   return Session.equals( "svgShape", this.shape );
+  // var card = Cards.find( {} );
+  // return card && card.shape;
 
 } );

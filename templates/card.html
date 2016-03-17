@@ -1,17 +1,5 @@
 <template name="card">
   <ul class="svg-container">
-    {{#if card.shape = shape1}}
-      {{> shape1}}
-    {{else}}
-      {{> shape2}}
-<!--
-    {{else}}
-      {{> shape3}} -->
-    {{/if}}
-
+    {{#if card.shape = shape1}} {{> shape1}} {{else}} {{> shape2}} {{/if}}
   </ul>
-  </template>
-<!-- <svg class="card" height="100%" width="100%" xmlns="http://www.w3.org/2000/svg"> -->
-
-<!-- </svg> -->
-<!-- I'm the card template -->
+</template>

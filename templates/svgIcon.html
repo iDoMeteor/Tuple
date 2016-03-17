@@ -1,17 +1,12 @@
 <template name="svgIcon">
-  {{#if card.shape = shape1}}
-    {{> shape1}}
-  {{/if}}
 
-  {{#if card.shape = shape2}}
-    {{> shape2}}
-  {{/if}}
+<li class="svg-item">
+  <svg class="svgIcon" xmlns="http://www.w3.org/2000/svg">
+    <image xlink:href="shape2.svg" x="-45" y="0" height="135px" width="135px" fill="tomato" />
+  </svg>
+</li>
 
-  {{#if card.shape = shape3}}
-    {{> shape3}}
-  {{/if}}
 
-<!-- I'm the svgIcon template -->
 </template>
 
 <!-- <object class="svgIcon" type="image/svg+xml" data={{svgShape}} fill={{svgColor}}></object> -->
