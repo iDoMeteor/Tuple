@@ -1,9 +1,7 @@
 Meteor.subscribe( "cards" );
 Template.board.helpers( {
   cards: function () {
-    return Cards.find( {}, {
-      limit: 81
-    } );
+    return Cards.find( {} ) ;
   },
   selectedCard: function () {
     var card = Cards.findOne( Session.get( "selectedCard" ) );
