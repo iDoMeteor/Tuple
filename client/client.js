@@ -2,7 +2,7 @@ Meteor.subscribe( "cards" );
 Template.board.helpers( {
   cards: function () {
     return Cards.find( {}, {
-      limit: 12
+      limit: 81
     } );
   },
   selectedCard: function () {
@@ -24,6 +24,16 @@ Template.board.events( {
   }
 } );
 Template.card.helpers( {
+  /*** Added this ***/
+  color: function () {
+    var card = Cards.findOne( Session.get( "selectedCard" ) );
+    return card && card.color;
+  },
+  /*** and this ***/
+  shape: function () {
+    var card = Cards.findOne( Session.get( "selectedCard" ) );
+    return card && card.shape;
+  },
   selected: function () {
       return Session.equals( "selectedCards", this._id ) ? "selected" : '';
     }
@@ -36,10 +46,5 @@ Template.card.events( {
   'rendered': function () {
     Session.set( "cardShape", this.shape );
   }
-
-  // svgShape: function () {
-  //   return Session.equals( "svgShape", this.shape );
-  // var card = Cards.find( {} );
-  // return card && card.shape;
 
 } );

@@ -2,7 +2,9 @@ Meteor.startup( function deck() {
   Cards.remove( {} );
   if ( Meteor.isServer ) {
     Meteor.publish( "cards", function () {
-      return Cards.find( {} )
+      return Cards.find( {}, {
+      	limit: 81
+      } )
     } );
   }
 } );
