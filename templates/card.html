@@ -1,16 +1,5 @@
 <template name="card">
   <ul class="svg-container">
-
-    {{#if card.shape = 'shape1' }}
-      {{> shape1}}
-    {{/if}}
-<!-- {{> shape2}}
-    {{> shape3}} -->
+    {{#if card.shape = shape1}} {{> shape1}} {{else}} {{> shape2}} {{/if}}
   </ul>
-<!-- <svg class="card" height="100%" width="100%" xmlns="http://www.w3.org/2000/svg"> -->
-
-<!-- </svg> -->
-<!-- I'm the card template -->
 </template>
-
-<!-- {{> UI.dynamic template=svgIcon}} -->

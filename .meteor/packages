@@ -6,6 +6,10 @@
 
 insecure
 twbs:bootstrap
+<<<<<<< HEAD
+=======
+meteortoys:allthings
+>>>>>>> f09b7cb943240861a58bcaa91d310b74362a55fa
 meteor-base
 mobile-experience
 mongo
