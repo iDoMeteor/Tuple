@@ -63,7 +63,8 @@ Template.card.helpers({
 
 Template.card.events({
 
-  'click': function () {
+  'click .card-holder': function (event) {
+    console.log('trying: ' + $(event.target).attr('id'));
     Session.set( "selectedCard", this._id );
   },
 
