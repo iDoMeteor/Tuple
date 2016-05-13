@@ -51,9 +51,9 @@ Template.card.helpers({
   },
 
   selected: function () {
-    var card = Session.get( "selectedCard" );
+    var card = Session.get( "selectedCards" );
     return (card._id == this._id) ? "selected" : '';
-  }
+  },
 
 });
 
@@ -87,7 +87,7 @@ Template.selectedCardBanner.helpers({
 
   selectedCard: function () {
     var card = Session.get( "selectedCard" );
-    return card.name;
+    return card && card.name;
   },
 
 });
