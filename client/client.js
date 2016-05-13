@@ -7,7 +7,13 @@ Template.board.helpers({
   cardShape: function () {
     var card = Session.get( "selectedCard" );
     return card.shape;
+  },
+
+  cardColor: function () {
+  var card = Session.get( "cardColor" );
+  return card.color;
   }
+
 
 });
 
@@ -70,15 +76,17 @@ Template.card.events({
     $(svg).find('path').attr('style', 'fill:red');
   },
 
-  'mouseout .card-holder': function (event) {
+  'rendered .card-holder': function (event) {
     var num = $(event.target).attr('id').substr(3);
     var svg = $('#svg-' + num)[0].contentDocument;
     $(svg).find('path').attr('style', 'fill:cyan');
-  },
-
-  'rendered': function () {
     Session.set( "cardShape", this.shape );
   }
+
+  // 'rendered': function () {
+  //   Session.set( "cardShape", this.shape );
+  //   // Session.set( "cardColor", this.color );
+  // }
 
 });
 
