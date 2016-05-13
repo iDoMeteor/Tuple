@@ -1,3 +1,8 @@
-<svg class="shape1" xmlns="http://www.w3.org/2000/svg" width="150px" height="150px" viewBox="0 0 1024 768">
+<svg version="1.1"
+  baseProfile="full"
+  class="shape1"
+  width="150px" height="150px"
+  viewBox="0 0 1024 768"
+  xmlns="http://www.w3.org/2000/svg">
   <path d="M511.9 184l-100 200 100 200 100-200"/>
 </svg>
