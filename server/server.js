@@ -71,6 +71,7 @@ Meteor.startup( function deck () {
   // Check for deck
   var deck = null;
   if (!Cards.find().count()) {
+    console.log('Tuple: Generating initial deck');
     deck = newDeck();
     insertDeck(deck);
   }
