@@ -6,7 +6,6 @@
 
 insecure
 twbs:bootstrap
-meteortoys:allthings@3.0.0
 meteor-base
 mobile-experience
 mongo
