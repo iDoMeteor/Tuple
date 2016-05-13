@@ -4,14 +4,9 @@ Template.board.helpers({
     return Cards.find({}) ;
   },
 
-  selectedCard: function () {
-    var card = Cards.findOne( Session.get( "selectedCard" ) );
-    return card && card.name;
-  },
-
   cardShape: function () {
-    var shape = Cards.find( Session.get( "cardShape" ) );
-    return card && card.shape;
+    var card = Session.get( "selectedCard" );
+    return card.shape;
   }
 
 });
@@ -20,7 +15,8 @@ Template.board.helpers({
 Template.board.events({
 
   'click .inc': function () {
-    Cards.update( Session.get( "selectedCard" ), {
+    card = Session.get( "selectedCard" )
+    Cards.update(card.id , {
       $inc: {
         score: 1
       }
@@ -40,22 +36,23 @@ Template.board.onCreated(function () {
 Template.card.helpers({
 
   color: function () {
-    var card = Cards.findOne( Session.get( "selectedCard" ) );
-    return card && card.color;
+    var card = Session.get( "selectedCard" );
+    return card.color;
   },
 
   num: function () {
-    var card = Cards.findOne( Session.get( "selectedCard" ) );
-    return card && card.num;
+    var card = Session.get( "selectedCard" );
+    return card.num;
   },
 
   shape: function () {
-    var card = Cards.findOne( Session.get( "selectedCard" ) );
-    return card && card.shape;
+    var card = Session.get( "selectedCard" );
+    return card.shape;
   },
 
   selected: function () {
-    return Session.equals( "selectedCards", this._id ) ? "selected" : '';
+    var card = Session.get( "selectedCard" );
+    return (card._id == this._id) ? "selected" : '';
   }
 
 });
@@ -64,12 +61,33 @@ Template.card.helpers({
 Template.card.events({
 
   'click .card-holder': function (event) {
-    console.log('trying: ' + $(event.target).attr('id'));
-    Session.set( "selectedCard", this._id );
+    Session.set( "selectedCard", this );
+  },
+
+  'mouseover .card-holder': function (event) {
+    var num = $(event.target).attr('id').substr(3);
+    var svg = $('#svg-' + num)[0].contentDocument;
+    $(svg).find('path').attr('style', 'fill:red');
+  },
+
+  'mouseout .card-holder': function (event) {
+    var num = $(event.target).attr('id').substr(3);
+    var svg = $('#svg-' + num)[0].contentDocument;
+    $(svg).find('path').attr('style', 'fill:cyan');
   },
 
   'rendered': function () {
     Session.set( "cardShape", this.shape );
   }
+
+});
+
+
+Template.selectedCardBanner.helpers({
+
+  selectedCard: function () {
+    var card = Session.get( "selectedCard" );
+    return card.name;
+  },
 
 });

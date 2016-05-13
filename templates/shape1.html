@@ -1,9 +1,7 @@
 <template name="shape1">
-  <li class="svg-item">
-    <div style="position:relative;width:135px;height:135px;">
-      <object id="svg-{{num}}" width="135" height="135" type="image/svg+xml" data="/shape1.svg" style="position:absolute;top:0;left:0;"></object>
-      <button class="card-holder" id="ch-{{num}}" style="opacity:0.1;position:absolute;top:0;left:0;height:135px;width:135px;z-index:1"></button>
-    </div>
-  </li>
+  <div class="col-xs-1" style="position:relative;width:135px;height:135px;">
+    <object id="svg-{{num}}" width="135" height="135" type="image/svg+xml" data="/{{shape}}.svg" style="position:absolute;top:0;left:0;"></object>
+    <button class="card-holder" id="ch-{{num}}" style="opacity:0.3;position:absolute;top:10px;left:10px;height:115px;width:115px;z-index:1"></button>
+  </div>
 </template>
      <!--  {{> UI.dynamic template=card.shape}} -->

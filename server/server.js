@@ -77,7 +77,7 @@ Meteor.startup( function deck () {
 
   Meteor.publish( "cards", function () {
     return Cards.find({}, {
-      limit: 12
+      limit: 81
     });
   });
 
