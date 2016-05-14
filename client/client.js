@@ -70,18 +70,18 @@ Template.card.events({
     Session.set( "selectedCard", this );
   },
 
-  'mouseover .card-holder': function (event) {
+  'onCreated .card-holder': function (event) {
     var num = $(event.target).attr('id').substr(3);
     var svg = $('#svg-' + num)[0].contentDocument;
     $(svg).find('path').attr('style', 'fill:red');
-  },
-
-  'rendered .card-holder': function (event) {
-    var num = $(event.target).attr('id').substr(3);
-    var svg = $('#svg-' + num)[0].contentDocument;
-    $(svg).find('path').attr('style', 'fill:cyan');
-    Session.set( "cardShape", this.shape );
   }
+
+  // 'rendered .card-holder': function (event) {
+  //   var num = $(event.target).attr('id').substr(3);
+  //   var svg = $('#svg-' + num)[0].contentDocument;
+  //   $(svg).find('path').attr('style', 'fill:cyan');
+  //   Session.set( "cardShape", this.shape );
+  // }
 
   // 'rendered': function () {
   //   Session.set( "cardShape", this.shape );
