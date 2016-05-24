@@ -65,15 +65,13 @@ Template.card.events({
   },
 
   'mouseover .card-holder': function (event) {
-    var num = $(event.target).attr('id').substr(3);
-    var svg = $('#svg-' + num)[0].contentDocument;
-    $(svg).find('path').attr('style', 'fill:red');
+    var svg = Tuple.getSVGfromEvent(event);
+    Tuple.svgChangeAttribute(svg, 'fill', 'red');
   },
 
   'mouseout .card-holder': function (event) {
-    var num = $(event.target).attr('id').substr(3);
-    var svg = $('#svg-' + num)[0].contentDocument;
-    $(svg).find('path').attr('style', 'fill:cyan');
+    var svg = Tuple.getSVGfromEvent(event);
+    Tuple.svgChangeAttribute(svg, 'fill', 'cyan');
   },
 
   'rendered': function () {

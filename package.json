@@ -31,13 +31,14 @@
     "multi",
     "player"
   ],
-  "author": "@iDoMeteor",
+  "author": "@Its_Wipa / @iDoMeteor",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/wipa/Tuple/issues"
   },
   "homepage": "https://github.com/wipa/Tuple",
   "dependencies": {
+    "meteor-node-stubs": "^0.2.3",
     "shuffle": "^0.2.2"
   }
 }
