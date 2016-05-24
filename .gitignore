@@ -1,10 +1,11 @@
 *.swo
 *.swp
 *~
-.meteor/local
 .meteor/.finished-upgraders
 .meteor/.id
+.meteor/local
 .meteor/platforms
+node_modules/
 notes.txt
 packages/
 private/
