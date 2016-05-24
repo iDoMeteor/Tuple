@@ -1,0 +1,43 @@
+{
+  "name": "tuple",
+  "version": "0.0.2",
+  "description": "Tuple is a challenging card game based on Set in which you select sets of 3 cards with matching attributes, made with Meteor by @Its_Wipa & @iDoMeteor.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wipa/Tuple"
+  },
+  "keywords": [
+    "tuple",
+    "meteor",
+    "set",
+    "javascript",
+    "game",
+    "open",
+    "source",
+    "free",
+    "mensa",
+    "iq",
+    "test",
+    "speed",
+    "match",
+    "game",
+    "fun",
+    "card",
+    "cards",
+    "multi",
+    "player"
+  ],
+  "author": "@iDoMeteor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wipa/Tuple/issues"
+  },
+  "homepage": "https://github.com/wipa/Tuple",
+  "dependencies": {
+    "shuffle": "^0.2.2"
+  }
+}

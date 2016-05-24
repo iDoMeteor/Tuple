@@ -1,0 +1,11 @@
+{
+  "name": "tuple",
+  "version": "0.0.2",
+  "dependencies": {
+    "shuffle": {
+      "version": "0.2.2",
+      "from": "shuffle@latest",
+      "resolved": "https://registry.npmjs.org/shuffle/-/shuffle-0.2.2.tgz"
+    }
+  }
+}

@@ -1,0 +1,118 @@
+@import url(http://fonts.googleapis.com/css?family=Lato);
+
+/*// first we set descriptive variables:
+$darkgrey: #333333;
+$blue: #001eff;
+
+// then we set functional variables:
+$text_color: $darkgrey;
+$link_color: $lightblue;
+$border_color: $lightblue;
+
+.myClass{
+  color: $text_color;
+  border-color: $border_color;
+}
+a{
+  color: $link_color;
+}*/
+
+$offwhite: #e2e2e2;
+body {
+  font: 1em Lato;
+}
+.logo {
+  margin: 0 auto;
+  text-align: center;
+  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0ZWQgYnkgSWNvTW9vbi5pbyAtLT4KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj4KPGcgaWQ9Imljb21vb24taWdub3JlIj4KCTxsaW5lIHN0cm9rZS13aWR0aD0iMSIgeDE9IiIgeTE9IiIgeDI9IiIgeTI9IiIgc3Ryb2tlPSIjNDQ5RkRCIiBvcGFjaXR5PSIiPjwvbGluZT4KPC9nPgoJPHBhdGggZD0iTTI2LjUyIDI0LjcwNWwtNi41Mi0xMS4yOTN2LTcuODc3aDAuNzVjMC42OSAwIDEuMjUtMC41NiAxLjI1LTEuMjVzLTAuNTYtMS4yNS0xLjI1LTEuMjVoLTkuNWMtMC42OSAwLTEuMjUgMC41Ni0xLjI1IDEuMjVzMC41NiAxLjI1IDEuMjUgMS4yNWgwLjc1djcuODc3bC02LjUyIDExLjI5M2MtMS4zNzUgMi4zODEtMC4yNSA0LjMzIDIuNSA0LjMzaDE2LjA0MGMyLjc1IDAgMy44NzUtMS45NDkgMi41LTQuMzN6TTE0LjUgNS41MzVoM2wtMC4wMDIgOC41NDMgMS45OTYgMy40NTdoLTYuOTljMS4xMjMtMS45NDYgMS45OTYtMy40NTkgMS45OTYtMy40NTl2LTguNTQxek0yNC4wMjAgMjYuNTM1aC0xNi4wNDBjLTAuMjU5IDAtMC40NDMtMC4wMzAtMC41NjEtMC4wNjMgMC4wMzEtMC4xMTkgMC4wOTctMC4yOTQgMC4yMjctMC41MTggMCAwIDEuNzA2LTIuOTU3IDMuNDE2LTUuOTJsOS44NzYtMCAzLjQxOCA1LjkyYzAuMTI5IDAuMjI0IDAuMTk1IDAuMzk5IDAuMjI3IDAuNTE4LTAuMTE4IDAuMDMyLTAuMzAzIDAuMDYzLTAuNTYyIDAuMDYzeiIgZmlsbD0iIzAwMDAwMCI+PC9wYXRoPgo8L3N2Zz4K');
+  background-position: center center;
+  /*background-color: rgb(255, 252, 0);*/
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 3em;
+  /*margin: 0 auto .75em;*/
+  width: 3em;
+}
+.title {
+  font-size: 3em;
+  font-weight: 600;
+  letter-spacing: .3em;
+  margin: 0 0 .25em;
+  text-align: center;
+  margin: 0 auto;
+  text-transform: uppercase;
+}
+.subtitle {
+  color: #999;
+  font-size: 1em;
+  margin-bottom: 2em;
+  margin: 0 auto;
+  text-align: center;
+}
+#shape1 {
+  margin: 0 auto;
+  text-align: center;
+}
+.flex-container {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
+}
+.flex-item {
+  background: $offwhite;
+  padding: 5px;
+  width: 150px;
+  height: 150px;
+  margin-top: 10px;
+  line-height: 150px;
+  color: white;
+  font-weight: bold;
+  font-size: 3em;
+  text-align: center;
+}
+.svg-container {
+  padding: 0;
+  margin: 0 auto;
+  text-align: center;
+  height: 140px;
+  width: 100%;
+  list-style: none;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
+}
+.svg-item {
+  background: $offwhite;
+  fill: #FF530D;
+  max-width: 30%;
+  max-height: 100%;
+  font-weight: bold;
+  font-size: 3em;
+  text-align: center;
+  margin: 0 auto;
+}
+.name {
+  font-size: 2em;
+  text-align: center;
+}
+message {
+  text-align: center;
+  font-size: 2em;
+}
+
+/*.img {
+  text-align: center;
+  margin: 0 auto;
+  display: inline;
+}*/

@@ -1,0 +1,30 @@
+<template name="board">
+
+  {{>selectedCardBanner}}
+
+  <div class="container-fluid board {{selected}}" id="details">
+    <section class="row">
+
+      {{#each cards}}
+          {{> card}}
+      {{/each}}
+
+    </section>
+  </div>
+
+  {{>selectedCardBanner}}
+
+</template>
+
+
+<template name="selectedCardBanner">
+
+  {{#if selectedCard}}
+    <div class="details" style="text-align: center">
+      <div class="name">{{selectedCard}}</div>
+    </div>
+  {{else}}
+    <div class="message" style="text-align: center">Click a card to select</div>
+  {{/if}}
+
+</template>
