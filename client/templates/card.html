@@ -10,7 +10,9 @@
       width="150px" height="150px"
       viewBox="0 0 1024 768"
       xmlns="http://www.w3.org/2000/svg">
-      <path d="{{path}}" />
+      {{#each path in paths}}
+        <path d="{{path}}" />
+      {{/each}}
     </svg>
     <button
       class="card-holder {{active}}"
