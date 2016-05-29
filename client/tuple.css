@@ -49,10 +49,6 @@ body {
   margin: 0 auto;
   text-align: center;
 }
-#shape1 {
-  margin: 0 auto;
-  text-align: center;
-}
 .flex-container {
   padding: 0;
   margin: 0;
@@ -116,3 +112,33 @@ message {
   margin: 0 auto;
   display: inline;
 }*/
+
+.card {
+  height: 150px;
+  text-align: center;
+  width: 150px;
+}
+.card-holder {
+  opacity:0;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  height:130px;
+  width:130px;
+  z-index:1;
+}
+.card-holder-active {
+  opacity:0.4;
+}
+.card-svg {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height:150px;
+  width:150px;
+}
+.cards-loading {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
