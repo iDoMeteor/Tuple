@@ -61,17 +61,11 @@ Template.card.helpers({
 Template.card.events({
 
   'click .card-holder': function (event) {
-    Session.set( "selectedCard", this );
-  },
-
-  'mouseover .card-holder': function (event) {
+    // This is the context of the card template,
+    // which should be a valid card object
+    var context = this;
     var svg = Tuple.getSVGfromEvent(event);
-    Tuple.svgChangeAttribute(svg, 'fill', 'red');
-  },
-
-  'mouseout .card-holder': function (event) {
-    var svg = Tuple.getSVGfromEvent(event);
-    Tuple.svgChangeAttribute(svg, 'fill', 'cyan');
+    Tuple.selectionCheck(context, svg);
   },
 
   'rendered': function () {
