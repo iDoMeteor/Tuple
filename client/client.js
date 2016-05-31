@@ -14,8 +14,25 @@ Template.board.helpers({
 
 Template.controls.events({
 
-  'click .controls-new-game': () => {
+  'click .controls-new-game': (event) => {
+    event.preventDefault();
     Tuple.deal();
+  },
+
+  'click .controls-check-tuple': (event) => {
+    event.preventDefault();
+    let tuple = Tuple.isTuple(Session.get('selectionSet'));
+    _.each(Session.get('selectionSet'), (id) => {
+      console.log(JSON.stringify(Cards.find({_id: id}).fetch(), null, 2));
+    });
+    if (tuple) {
+      alert('Tupz!');
+    } else {
+      console.log('You lose!');
+    }
+    Session.set('selectedCard', null);
+    Session.set('selectionSet', null);
+    $('.card-holder').removeClass('card-holder-active');
   },
 
 });
@@ -64,9 +81,25 @@ Template.card.helpers({
 });
 
 
+Template.card.onRendered(function () {
+
+  let color = this.data.color;
+  let fill = this.data.fill;
+  let id = this.data._id;
+  let num = this.data.num;
+  this.$('#svg-' + num).attr(
+    'style',
+    'fill:' + color +
+      '; stroke:' + fill +
+      '; stroke-width: 10px;');
+
+});
+
+
 Template.cardHolder.events({
 
   'click .card-holder': function (event) {
+    event.preventDefault();
     var context = this;
     var svg = Tuple.getSVGfromEvent(event);
     Tuple.selectionCheck(context, svg);
@@ -75,12 +108,13 @@ Template.cardHolder.events({
 });
 
 
-Template.card.onRendered(function () {
+Template.cardHolder.onRendered(function () {
 
-  let color = this.data.color;
   let id = this.data._id;
   let num = this.data.num;
-  this.$('#svg-' + num).attr('style', 'fill:' + color);
+  if (-1 != _.indexOf(Session.get('selectionSet'), id)) {
+    $('#ch-' + num).addClass('card-holder-active');
+  }
 
 });
 
