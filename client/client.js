@@ -1,33 +1,37 @@
 Template.board.helpers({
 
   cards: function () {
-    return Cards.find({}) ;
+
+    if (_.isEmpty(Session.get('deck'))) {
+      Tuple.deal();
+    }
+    return Session.get('deck');
+
   },
 
 });
 
 
-Template.board.events({
+Template.controls.events({
 
-  // So they get a point for clicking a card?
-  'click .inc': function () {
-    card = Session.get( "selectedCard" )
-    Cards.update(card.id , {
-      $inc: {
-        score: 1
-      }
-    });
-  }
+  'click .controls-new-game': () => {
+    Tuple.deal();
+  },
 
 });
 
 
 Template.board.onCreated(function () {
 
-  this.subscribe( "cards" );
+  let handle = this.subscribe('deck');
+  Tracker.autorun (() => {
+    let ready = handle.ready();
+    if (ready && !Session.get('deck')) {
+      Tuple.deal();
+    }
+  });
 
 });
-
 
 Template.card.helpers({
 

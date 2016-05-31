@@ -10,7 +10,7 @@ Meteor.startup( function deck () {
     Tuple.insertDeck(deck);
   }
 
-  Meteor.publish( "cards", function () {
+  Meteor.publish('deck', () => {
     return Cards.find({}, {
       limit: 81
     });

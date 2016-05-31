@@ -19,6 +19,12 @@
 
     <hr>
 
+    <section class="row section-controls">
+      <div class="col-xs-12">
+        {{> controls}}
+      </div>
+    </section>
+
     <section id="stats" class="row section-stats">
       <div class="col-xs-12">
         {{>stats}}
@@ -90,6 +96,16 @@
         <path d="{{path}}" />
       {{/each}}
     </svg>
+
+</template>
+
+
+<template name="controls">
+
+  <button
+    class="btn-primary controls-new-game">
+    New Game
+  </button>
 
 </template>
 
