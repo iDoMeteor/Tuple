@@ -1,0 +1,150 @@
+<head>
+  <title>Tuple</title>
+  <meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport">
+  <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css">
+</head>
+
+
+<body>
+
+  <div class="container-fluid">
+
+    <section class="row section-header">
+      <div class="col-xs-12">
+        <div class="logo"></div>
+        <h1 class="title">Tuple</h1>
+        <div class="subtitle">Find Patterns for Points</div>
+      </div>
+    </section>
+
+    <hr>
+
+    <section id="stats" class="row section-stats">
+      <div class="col-xs-12">
+        {{>stats}}
+      </div>
+    </section>
+
+    <section class="row section-board">
+      <div class="col-xs-12">
+        {{> board}}
+      </div>
+    </section>
+
+    <section id="stats" class="row section-stats">
+      <div class="col-xs-12">
+        {{>stats}}
+      </div>
+    </section>
+
+  </div>
+
+</body>
+
+
+<template name="board">
+
+  <div class="row card-table">
+    {{#if Template.subscriptionsReady}}
+      {{#each cards}}
+        {{> card}}
+      {{/each}}
+    {{else}}
+      {{>loadingDeck}}
+    {{/if}}
+  </div>
+
+</template>
+
+
+<template name="card">
+
+  <div class="col-xs-1 card">
+    {{>cardImage num=num paths=paths}}
+    {{>cardHolder}}
+  </div>
+
+</template>
+
+
+<template name="cardHolder">
+
+  <button
+    class="card-holder {{active}}"
+    id="ch-{{num}}">
+  </button>
+
+</template>
+
+
+<template name="cardImage">
+
+    <svg version="1.1"
+      baseProfile="full"
+      id="svg-{{num}}"
+      class="card-svg"
+      width="150px" height="150px"
+      viewBox="0 0 1024 768"
+      xmlns="http://www.w3.org/2000/svg">
+      {{#each path in paths}}
+        <path d="{{path}}" />
+      {{/each}}
+    </svg>
+
+</template>
+
+
+<template name="stats">
+
+  <div class="stats" style="text-align: center">
+    <h2>Current Stats</h2>
+    <ul>
+      {{#if selectedCard}}
+        <li>{{selectedCard}}</li>
+      {{/if}}
+      {{#if availableTuples}}
+        <li>{{availableTuples}}</li>
+      {{/if}}
+      {{#if matchedTuples}}
+        <li>{{matchedTuples}}</li>
+      {{/if}}
+      {{#if matchFailures}}
+        <li>{{matchFailures}}</li>
+      {{/if}}
+      {{#if matchTimer}}
+        <li>{{matchTimer}}</li>
+      {{/if}}
+      {{#if score}}
+        <li>{{score}}</li>
+      {{/if}}
+    </ul>
+  </div>
+
+</template>
+
+
+<template name="loadingDeck">
+  <div class="col-xs-12 cards-loading vertical-center">
+    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+    width="24px" height="30px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+    <rect x="0" y="0" width="4" height="10" fill="#c0f5e9">
+    <animateTransform attributeType="xml"
+    attributeName="transform" type="translate"
+    values="0 0; 0 20; 0 0"
+    begin="0" dur="0.6s" repeatCount="indefinite" />
+    </rect>
+    <rect x="10" y="0" width="4" height="10" fill="#e2c7f3">
+    <animateTransform attributeType="xml"
+    attributeName="transform" type="translate"
+    values="0 0; 0 20; 0 0"
+    begin="0.2s" dur="0.6s" repeatCount="indefinite" />
+    </rect>
+    <rect x="20" y="0" width="4" height="10" fill="#ff0083">
+    <animateTransform attributeType="xml"
+    attributeName="transform" type="translate"
+    values="0 0; 0 20; 0 0"
+    begin="0.4s" dur="0.6s" repeatCount="indefinite" />
+    </rect>
+    </svg>
+  </div>
+</template>
