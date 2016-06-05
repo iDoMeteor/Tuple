@@ -26,7 +26,7 @@ Template.controls.events({
       console.log(JSON.stringify(Cards.find({_id: id}).fetch(), null, 2));
     });
     if (tuple) {
-      console.log('You jon!');
+      console.log('You won!');
       alert('Tupz!');
     } else {
       console.log('You lose!');
