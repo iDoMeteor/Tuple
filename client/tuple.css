@@ -128,6 +128,8 @@ message {
   z-index:1;
 }
 .card-holder-active {
+  background-color: white;
+  border: 5px solid cyan;
   opacity:0.4;
 }
 .card-svg {

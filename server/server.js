@@ -16,4 +16,9 @@ Meteor.startup( function deck () {
     });
   });
 
+  Meteor.publish('Lifetime', () => {
+    return Lifetime.find({});
+  });
+
+
 });

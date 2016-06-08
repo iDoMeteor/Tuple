@@ -12,28 +12,80 @@ Template.board.helpers({
 });
 
 
+Template.cheatButton.helpers({
+
+  cheat: () => {
+    return Session.get('cheater');
+  },
+
+});
+
+
+Template.cheatButtonShow.events({
+
+  'click .show-card-name': () => {
+    Session.set('cheater', true);
+  },
+
+});
+
+
+Template.cheatButtonHide.events({
+
+  'click .hide-card-name': () => {
+    Session.set('cheater', false);
+  },
+
+});
+
+
 Template.controls.events({
 
-  'click .controls-new-game': (event) => {
+  'click .control-new-game': (event) => {
     event.preventDefault();
     Tuple.deal();
   },
 
-  'click .controls-check-tuple': (event) => {
+  'click .control-check-tuple': (event) => {
     event.preventDefault();
+    let playerId = 0;
     let tuple = Tuple.isTuple(Session.get('selectionSet'));
-    _.each(Session.get('selectionSet'), (id) => {
-      console.log(JSON.stringify(Cards.find({_id: id}).fetch(), null, 2));
-    });
     if (tuple) {
-      console.log('You won!');
-      alert('Tupz!');
+      console.log('Tuple!');
+      let deck = Session.get('deck') || [];
+      let length = deck.length || 0;
+      Meteor.call('tupleIncrementGlobalLifetimeTuples');
+      //Meteor.call('tupleIncrementPlayerGameTuples', playerId);
+      //Meteor.call('tupleIncrementPlayerLifetimeTuples', playerId);
+      //Tuple.storeGameSelectionSet(true);
+      //Tuple.storeGlobalSelectionSet(true);
+      //Tuple.storePlayerSelectionSet(true);
+      $('.card-holder').removeClass('card-holder-active');
+      _.each(Session.get('selectionSet'), (id) => {
+        let card = Cards.findOne({_id: id});
+        let num = card.num || 0;
+        _.each(deck, (c, k) => {
+          if (id == c._id) {
+            deck.splice(k, 1);
+          }
+        });
+        $('#svg-' + num).parent().remove();
+      });
+      Session.set('deck', deck);
+      Tuple.drawThree();
+      Session.set('selectedCard', null);
+      Session.set('selectionSet', null);
     } else {
-      console.log('You lose!');
+      console.log('Failure >:O');
+      Meteor.call('tupleIncrementGlobalLifetimeFails');
+      //Meteor.call('tupleIncrementPlayerGameFails', playerId);
+      //Meteor.call('tupleIncrementPlayerLifetimeFails', playerId);
+      //Tuple.storeGameSelectionSet();
+      //Tuple.storeGlobalSelectionSet();
+      //Tuple.storePlayerSelectionSet();
     }
-    Session.set('selectedCard', null);
-    Session.set('selectionSet', null);
-    $('.card-holder').removeClass('card-holder-active');
+    //Tuple.calculatePlayerPoints();
+    //Tuple.updateGameState();
   },
 
 });
@@ -41,8 +93,8 @@ Template.controls.events({
 
 Template.board.onCreated(function () {
 
-  let handle = this.subscribe('deck');
-  Tracker.autorun (() => {
+  this.autorun (() => {
+    let handle = this.subscribe('deck');
     let ready = handle.ready();
     if (ready && !Session.get('deck')) {
       Tuple.deal();
@@ -120,16 +172,98 @@ Template.cardHolder.onRendered(function () {
 });
 
 
-Template.selectedCardBanner.helpers({
-
-  availableTuples: function () {
-    var card = Session.get( "selectedCard" );
-    return card && card.name;
-  },
+Template.cheatButtonHide.helpers({
 
   selectedCard: function () {
     var card = Session.get( "selectedCard" );
-    return card && card.name;
+    return ('string' == typeof(card.name)) ?
+      card.name :
+      null;
+  },
+
+});
+
+
+Template.helpButton.events({
+
+  'click .control-show-rules': () => {
+    Session.set('showRules', true);
+  },
+
+});
+
+
+Template.statsGame.helpers({
+
+  available: () => {
+    return '0';
+  },
+
+  cheat: () => {
+    return Session.get('cheater');
+  },
+
+  deck: () => {
+    let deck =  Session.get('master') || [];
+    return deck.length;
+  },
+
+  fails: () => {
+    return '0';
+  },
+
+  points: () => {
+    return '0';
+  },
+
+  timer: () => {
+    return '0';
+  },
+
+  tuples: () => {
+    return '0';
+  },
+
+});
+
+
+Template.statsLifetime.helpers({
+
+  fails: function () {
+    let count = Tuple.getGlobalLifetimeFails();
+    return count;
+  },
+
+  points: () => {
+    return '0';
+  },
+
+  tuples: function () {
+    let count = Tuple.getGlobalLifetimeTuples();
+    return count;
+  },
+
+});
+
+
+Template.statsLifetime.onCreated(function () {
+
+  this.subscribe('Lifetime');
+
+});
+
+Template.statsPlayer.helpers({
+
+  fails: () => {
+    return '0';
+  },
+
+  points: () => {
+    return '0';
+  },
+
+  tuples: () => {
+    return '0';
   },
 
 });

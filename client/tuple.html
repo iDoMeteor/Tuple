@@ -20,26 +20,33 @@
     <hr>
 
     <section class="row section-controls">
-      <div class="col-xs-12">
-        {{> controls}}
+      <div class="col-xs-6 text-center">
+        {{> cheatButton ""}}
+        {{> helpButton ""}}
+      </div>
+      <div class="col-xs-6 text-center">
+        {{> controls ""}}
       </div>
     </section>
 
-    <section id="stats" class="row section-stats">
-      <div class="col-xs-12">
-        {{>stats}}
+    <section id="stats-player-game" class="row section-stats">
+      <div id="stats-game" class="col-xs-6">
+        {{>statsGame ""}}
+      </div>
+      <div id="stats-player" class="col-xs-6">
+        {{>statsPlayer ""}}
       </div>
     </section>
 
     <section class="row section-board">
       <div class="col-xs-12">
-        {{> board}}
+        {{> board ""}}
       </div>
     </section>
 
-    <section id="stats" class="row section-stats">
+    <section id="stats-lifetime" class="row section-stats">
       <div class="col-xs-12">
-        {{>stats}}
+        {{>statsLifetime ""}}
       </div>
     </section>
 
@@ -50,15 +57,13 @@
 
 <template name="board">
 
-  <div class="row card-table">
-    {{#if Template.subscriptionsReady}}
-      {{#each cards}}
-        {{> card}}
-      {{/each}}
-    {{else}}
-      {{>loadingDeck}}
-    {{/if}}
-  </div>
+  {{#if Template.subscriptionsReady}}
+    {{#each cards}}
+      {{> card}}
+    {{/each}}
+  {{else}}
+    {{>loadingDeck}}
+  {{/if}}
 
 </template>
 
@@ -100,45 +105,175 @@
 </template>
 
 
-<template name="controls">
+<template name="cheatButton">
 
-  <button
-    class="btn-primary controls-new-game">
-    New Game
-  </button>
+  {{#if cheat}}
+    {{> cheatButtonHide}}
+  {{else}}
+    {{> cheatButtonShow}}
+  {{/if}}
 
-  <button
-    class="btn-primary controls-check-tuple">
-    Check Tuple
+</template>
+
+
+<template name="cheatButtonHide">
+
+  <button class="hide-card-name btn btn-warning">
+    {{#if selectedCard}}
+      {{selectedCard}}
+    {{else}}
+      Hide Helper
+    {{/if}}
   </button>
 
 </template>
 
 
-<template name="stats">
+<template name="cheatButtonShow">
 
-  <div class="stats" style="text-align: center">
-    <h2>Current Stats</h2>
-    <ul>
-      {{#if selectedCard}}
-        <li>{{selectedCard}}</li>
-      {{/if}}
-      {{#if availableTuples}}
-        <li>{{availableTuples}}</li>
-      {{/if}}
-      {{#if matchedTuples}}
-        <li>{{matchedTuples}}</li>
-      {{/if}}
-      {{#if matchFailures}}
-        <li>{{matchFailures}}</li>
-      {{/if}}
-      {{#if matchTimer}}
-        <li>{{matchTimer}}</li>
-      {{/if}}
-      {{#if score}}
-        <li>{{score}}</li>
-      {{/if}}
-    </ul>
+  <button class="show-card-name btn btn-warning">
+    Show Cheats
+  </button>
+
+</template>
+
+
+<template name="controls">
+
+  <div class="game-controls">
+    <button
+      class="btn btn-primary control-new-game">
+      New Game
+    </button>
+
+    <button
+      class="btn btn-primary control-check-tuple">
+      Check Tuple
+    </button>
+  </div>
+
+</template>
+
+
+<template name="helpButton">
+
+  <button class="control-show-rules btn btn-info">
+    Rules
+  </button>
+
+</template>
+
+
+<template name="statsGame">
+
+  <div class="stats text-center">
+    <h2>Game Stats</h2>
+    <div class="row">
+      <div class="col-xs-4">
+        Points
+        <br>
+        {{points}}
+      </div>
+      <div class="col-xs-4">
+        Timer
+        <br>
+        {{timer}}
+      </div>
+      <div class="col-xs-4">
+        Deck
+        <br>
+        {{deck}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-4">
+        {{#if cheat}}
+          Avail
+          <br>
+          {{available}}
+        {{/if}}
+      </div>
+      <div class="col-xs-4">
+        Tuples
+        <br>
+        {{tuples}}
+      </div>
+      <div class="col-xs-4">
+        Fails
+        <br>
+        {{fails}}
+      </div>
+    </div>
+  </div>
+
+</template>
+
+
+<template name="statsLifetime">
+
+  <div class="stats text-center">
+    <h2>Lifetime Stats</h2>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-4">
+          Tuples
+        </div>
+        <div class="col-xs-4">
+          Fails
+        </div>
+        <div class="col-xs-4">
+          Points
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-4">
+          {{tuples}}
+        </div>
+        <div class="col-xs-4">
+          {{fails}}
+        </div>
+        <div class="col-xs-4">
+          {{points}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+</template>
+
+
+<template name="statsPlayer">
+
+  <div class="stats text-center">
+    <h2>Player{{name}} Stats</h2>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-4">
+          Tuples
+        </div>
+        <div class="col-xs-4">
+          Fails
+        </div>
+        <div class="col-xs-4">
+          Points
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-4">
+          {{tuples}}
+        </div>
+        <div class="col-xs-4">
+          {{fails}}
+        </div>
+        <div class="col-xs-4">
+          {{points}}
+        </div>
+      </div>
+    </div>
   </div>
 
 </template>
