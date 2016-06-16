@@ -15,3 +15,7 @@ standard-minifier-js
 tracker
 twbs:bootstrap
 ecmascript
+accounts-base
+accounts-ui
+accounts-twitter
+accounts-password

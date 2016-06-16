@@ -144,3 +144,16 @@ message {
   width: 100%;
   height: 100%;
 }
+
+/* Over-rides */
+#login-buttons a {
+  color: white;
+}
+#login-buttons .login-close-text,
+#login-buttons #forgot-password-link,
+#login-buttons #signup-link {
+  color: #337ab7;
+}
+#login-buttons input {
+  width: 10em;
+}
