@@ -1,4 +1,13 @@
-@import url(http://fonts.googleapis.com/css?family=Lato);
+/*
+ *@import url(http://fonts.googleapis.com/css?family=Lato);
+ */
+
+html,
+body,
+.container-fluid {
+  height: 100%;
+}
+
 
 /*// first we set descriptive variables:
 $darkgrey: #333333;
@@ -157,3 +166,38 @@ message {
 #login-buttons input {
   width: 10em;
 }
+.tuple {
+  background-color: lightgreen;
+}
+.fail {
+  background-color: pink;
+}
+.none {
+  visibility: hidden;
+}
+.margin-sides-2em {
+  margin-left: 2em;
+  margin-right: 2em;
+}
+.modal img {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+.modal h2 {
+  font-size: 1.5em;
+}
+.modal h2::first-letter {
+  font-size: 1.8em;
+  font-weight: bold;
+}
+.alert {
+  max-width: 40em;
+  min-width: 15em;
+  opacity: .9;
+  position: fixed;
+  right: 2em;
+  top: 2em;
+  width: 30%;
+  z-index: 1099;
+}
+

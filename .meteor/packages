@@ -1,9 +1,16 @@
+accounts-base
+accounts-password
+accounts-twitter
+accounts-ui
 blaze-html-templates
 check
+ecmascript
 ejson
+http
 jquery
 logging
 meteor-base
+mizzao:jquery-ui
 mobile-experience
 mongo
 random
@@ -14,8 +21,5 @@ standard-minifier-css
 standard-minifier-js
 tracker
 twbs:bootstrap
-ecmascript
-accounts-base
-accounts-ui
-accounts-twitter
-accounts-password
+astronomerio:core
+browser-policy

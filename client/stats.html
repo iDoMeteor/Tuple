@@ -1,0 +1,131 @@
+<template name="statsGame">
+
+  <div class="stats text-center">
+    <h2>Game Stats</h2>
+    <div class="row">
+      <div class="col-xs-4" title="Cards on table / Cards left in deck">
+        Deck
+        <br>
+        {{deck}}
+      </div>
+      <div class="col-xs-4" title="Time since this game began">
+        Timer
+        <br>
+        {{time}}
+      </div>
+      <div class="col-xs-4" title="Points accumulated in this game">
+        Points
+        <br>
+        {{points}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-4" title="Tuples in play / Card combinations">
+        {{#if cheat}}
+          Avail
+          <br>
+          {{available}}
+        {{else}}
+          <br>
+        {{/if}}
+      </div>
+      <div class="col-xs-4" title="Number of tuples identified in this game">
+        Tuples
+        <br>
+        {{tuples}}
+      </div>
+      <div class="col-xs-4" title="Number of failed tuple checks in this game">
+        Fails
+        <br>
+        {{fails}}
+      </div>
+    </div>
+  </div>
+
+</template>
+
+
+<template name="statsLifetime">
+
+  <div class="stats text-center">
+    <h2>Lifetime Stats</h2>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-2" title="Number of Tuples identified since launch">
+          Tuples
+          <br>
+          {{tuples}}
+        </div>
+        <div class="col-xs-2" title="Number of failed tuple checks since launch">
+          Fails
+          <br>
+          {{fails}}
+        </div>
+        <div class="col-xs-2" title="Number of points accumulated since launch">
+          Points
+          <br>
+          {{points}}
+        </div>
+        <div class="col-xs-2" title="Games of Tuple played since launch">
+          Games
+          <br>
+          {{games}}
+        </div>
+        <div class="col-xs-2" title="Amount of time spent tupling played since launch">
+          Time
+          <br>
+          {{time}}
+        </div>
+        <div class="col-xs-2" title="Amount of time spent tupling played since launch">
+          Finished
+          <br>
+          {{finished}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+</template>
+
+
+<template name="statsPlayer">
+
+  <div class="stats text-center">
+    <h2>{{name}} Stats</h2>
+    <div class="row">
+      <div class="col-xs-4" title="Number of games you have played">
+        Played
+        <br>
+        {{played}}
+      </div>
+      <div class="col-xs-4" title="Cummulative time you have played">
+        Time
+        <br>
+        {{time}}
+      </div>
+      <div class="col-xs-4" title="Number of points you have accumulated">
+        Points
+        <br>
+        {{points}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-4" title="Number of games you have finished">
+        Finished
+        <br>
+        {{finished}}
+      </div>
+      <div class="col-xs-4" title="Number of tuples you have identified">
+        Tuples
+        <br>
+        {{tuples}}
+      </div>
+      <div class="col-xs-4" title="Number of times you have failed a tuple check">
+        Fails
+        <br>
+        {{fails}}
+      </div>
+    </div>
+  </div>
+
+</template>
