@@ -5,459 +5,11 @@ Meteor.startup(() => {
   }
 });
 
-Template.alert.onRendered(function () {
-  var duration = this.data.duration || 6000;
-  var target = this.find('.alert');
-  Meteor.setTimeout(function () {
-    $(target).hide('fade', function () {
-      $(target).alert('close');
-    });
-  }, duration);
-});
-
-Template.board.helpers({
-
-  cards: function () {
-    if (_.isEmpty(Session.get('deck'))) {
-      Session.set('anonGames');
-      Tuple.newGame();
-    }
-    return Session.get('deck');
-  },
-
-});
-
-
-Template.cheatButton.helpers({
-
-  cheat: () => {
-    return Session.get('cheater');
-  },
-
-});
-
-
-Template.cheatButtonShow.events({
-
-  'click .show-card-name': (event) => {
-    event.preventDefault();
-    Session.set('cheater', true);
-  },
-
-});
-
-
-Template.cheatButtonHide.events({
-
-  'click .hide-card-name': (event) => {
-    event.preventDefault();
-    Session.set('cheater', false);
-  },
-
-});
-
-
-Template.controls.events({
-
-  'click .control-new-game': (event) => {
-    event.preventDefault();
-    if (!Meteor.userId()) {
-      let games = Session.get('anonGames') || 0;
-      if (4 < games) {
-        Tuple.popAlert('You may only play 5 games anonymously!', 'danger');
-        return;
-      } else {
-        Session.set('anonGames', ++games);
-      }
-    } else {
-      Session.set('anonGames');
-    }
-    if (!Session.get('gameOver')) {
-      Tuple.popAlert('Leaving game in progress to start new game', 'warning');
-    }
-    Tuple.newGame();
-  },
-
-  'click .control-view-scoreboard': (event) => {
-    event.preventDefault();
-    Session.set('rules');
-    Template.modal.events({
-      'click .control-scoreboard-fails': (event) => {
-        event.preventDefault();
-        Session.set('scoreboard', 'Fails');
-        Tuple.switchScoreboard();
-      },
-      'click .control-scoreboard-finished': (event) => {
-        event.preventDefault();
-        Session.set('scoreboard', 'Finished');
-        Tuple.switchScoreboard();
-      },
-      'click .control-scoreboard-ratio': (event) => {
-        event.preventDefault();
-        Session.set('scoreboard', 'Ratio');
-        Tuple.switchScoreboard();
-      },
-      'click .control-scoreboard-started': (event) => {
-        event.preventDefault();
-        Session.set('scoreboard', 'Started');
-        Tuple.switchScoreboard();
-      },
-      'click .control-scoreboard-time': (event) => {
-        event.preventDefault();
-        Session.set('scoreboard', 'Time');
-        Tuple.switchScoreboard();
-      },
-      'click .control-scoreboard-tuples': (event) => {
-        event.preventDefault();
-        Session.set('scoreboard', 'Tuples');
-        Tuple.switchScoreboard();
-      },
-    });
-    Tuple.popModal({
-      html: Blaze.toHTML(Template.scoreboard),
-      title: Blaze.toHTML(Template.scoreboardMenu),
-    });
-  },
-
-});
-
-
-Template.board.onCreated(function () {
-
-  this.autorun (() => {
-    this.subscribe('config');
-  });
-
-  this.autorun (() => {
-    const handle = this.subscribe('deck');
-    const ready = handle.ready();
-    if (ready && !Session.get('deck')) {
-      const id = Tuple.newGame();
-    }
-    if (ready && Session.get('deck')) {
-      const tuples = Tuple.numTuples(Session.get('deck'))[0];
-      if (!tuples) {
-        const remaining = Tuple.drawThree();
-        if (!remaining) {
-          Tuple.popAlert ('No cards left in deck!', 'info');
-        }
-      }
-    }
-  });
-
-});
-
-
-Template.card.helpers({
-
-  active: function () {
-    return (Tuple.isSelected(this._id)) ?
-      'card-holder-active' : null;
-  },
-
-  color: function () {
-    return this.color;
-  },
-
-  num: function () {
-    return this.num;
-  },
-
-  paths: function () {
-    let path  = null;
-    let qty = this.quant.toString();
-    const shape = this.shape;
-    paths = Tuple.getPath(qty, shape);
-    return paths;
-  },
-
-});
-
-
-Template.card.onRendered(function () {
-
-  const color = this.data.color;
-  const fill = this.data.fill;
-  const id = this.data._id;
-  const num = this.data.num;
-  this.$('#svg-' + num).attr(
-    'style',
-    'fill:' + color +
-      '; stroke:' + fill +
-      '; stroke-width: 20px;');
-
-});
-
-
-Template.cardHolder.events({
-
-  'click .card-holder': function (event) {
-    event.preventDefault();
-    var context = this;
-    var svg = Tuple.getSVGfromEvent(event);
-    Tuple.selectionCheck(context, svg);
-  },
-
-});
-
-
-Template.cardHolder.onRendered(function () {
-
-  const id = this.data._id;
-  const num = this.data.num;
-  if (-1 != _.indexOf(Session.get('selectionSet'), id)) {
-    $('#ch-' + num).addClass('card-holder-active');
-  }
-
-});
-
-
-Template.cheatButtonHide.helpers({
-
-  selectedCard: function () {
-    var card = Session.get( "selectedCard" );
-    return (card && ('string' == typeof(card.name))) ?
-      card.name :
-      null;
-  },
-
-});
-
-
-Template.gameOver.helpers({
-
-  gameOver: () => {
-    return Session.get('gameOver');
-  },
-
-});
-
-
-Template.helpButton.events({
-
-  'click .control-rules-show': (event) => {
-    event.preventDefault();
-    Session.set('scoreboard');
-    Session.set('rules', 1);
-    Template.modal.events({
-      'click .control-rules-next': (event) => {
-        event.preventDefault();
-        let current = Session.get('rules') || 1;
-        Session.set('rules', ++current);
-      },
-      'click .control-rules-prev': (event) => {
-        event.preventDefault();
-        let current = Session.get('rules') || 1;
-        Session.set('rules', --current);
-      },
-    });
-    Tuple.popModal({
-      html: () => {
-        const rules = {
-          'rules-1': Blaze.toHTML(Template['rules-1']),
-          'rules-2': Blaze.toHTML(Template['rules-2']),
-          'rules-3': Blaze.toHTML(Template['rules-3']),
-          'rules-4': Blaze.toHTML(Template['rules-4']),
-          'rules-5': Blaze.toHTML(Template['rules-5']),
-          'rules-6': Blaze.toHTML(Template['rules-6']),
-          'rules-7': Blaze.toHTML(Template['rules-7']),
-          'rules-8': Blaze.toHTML(Template['rules-8']),
-        }
-        const key = Session.get('rules') || '1'
-        return rules['rules-' + key];
-      },
-      nextClass: 'control-rules-next',
-      prevClass: 'control-rules-prev',
-      title: 'How to Tuple!',
-      next: () => {
-        let step = Session.get('rules') || 1;
-        return (8 > step) ? true : false;
-      },
-      nextText: () => {
-        const next = {
-          'text-1': 'See examples',
-          'text-2': 'Color examples',
-          'text-3': 'Quantity examples',
-          'text-4': 'Shape examples',
-          'text-5': 'Non-tuple examples',
-          'text-6': 'Scoring rules',
-          'text-7': 'About Tuple',
-          'text-8': 'About Tuple',
-        }
-        const key = Session.get('rules') || '1'
-        return next['text-' + key];
-      },
-      prev: () => {
-        let step = Session.get('rules') || 1;
-        return (1 < step) ? true : false;
-      },
-    });
-  },
-
-});
-
-
-Template.modal.onRendered(function () {
-    const target = this.find('.modal');
-    $(target).modal('show');
-    $(target).on('hidden.bs.modal', function () {
-        $(target).remove();
-    });
-});
-
-
-Template.scoreboard.helpers({
-  'template': () => {
-    const suffix = Session.get('scoreboard') || 'Ratio';
-    const board = 'scoreboard' + suffix;
-    return board;
-  },
-});
-
-
-Template.statsGame.helpers({
-
-  available: () => {
-    const deck = Session.get('deck');
-    if (deck && Session.get('cheater')) {
-      const result = Tuple.numTuples(deck);
-      return result[0] + '/' + result[1];
-    } else {
-      return 'N/A';
-    }
-  },
-
-  cheat: () => {
-    return Session.get('cheater');
-  },
-
-  deck: () => {
-    const table = Session.get('deck') || [];
-    const deck = Session.get('master') || [];
-    return table.length + '/' + deck.length;
-  },
-
-  fails: () => {
-    if (!Session.get('game')) return 0;
-    const id = Session.get('game')._id;
-    return Tuple.getGameFails(id);
-  },
-
-  points: () => {
-    if (!Session.get('game')) return 0;
-    const id = Session.get('game')._id;
-    return Tuple.getGamePoints(id);
-  },
-
-  time: () => {
-    const game = Session.get('game');
-    if (!game) return Tuple.msToTime(0);
-    const id = game._id;
-    let ms = Tuple.getGameTime(id);
-    Session.set('gameTime', ms);
-    Meteor.setInterval(() => {
-      Session.set('gameTime', Session.get('gameTime') + 1000);
-    }, 1000);
-    return Tuple.msToTime(Session.get('gameTime'));
-  },
-
-  tuples: () => {
-    if (!Session.get('game')) return 0;
-    const id = Session.get('game')._id;
-    return Tuple.getGameTuples(id);
-  },
-
-});
-
-
-Template.statsGame.onCreated(function () {
-
-  this.subscribe('game');
-
-});
-
-
-Template.statsLifetime.helpers({
-
-  fails: function () {
-    return Tuple.getGlobalLifetimeFails();
-  },
-
-  games: function () {
-    return Tuple.getGlobalLifetimeGames();
-  },
-
-  finished: function () {
-    return Tuple.getGlobalLifetimeGamesFinished();
-  },
-
-  points: () => {
-    return Tuple.getGlobalLifetimePoints();
-  },
-
-  time: function () {
-    return Tuple.msToTime(Tuple.getGlobalTimePlayed());
-  },
-
-  tuples: function () {
-    return Tuple.getGlobalLifetimeTuples();
-  },
-
-});
-
-
-Template.statsLifetime.onCreated(function () {
-
-  this.subscribe('Lifetime');
-
-});
-
-
-Template.statsPlayer.helpers({
-
-  fails: function () {
-    return Tuple.getPlayerLifetimeFails();
-  },
-
-  finished: function () {
-    return Tuple.getPlayerGamesFinished();
-  },
-
-  name: function () {
-    return Tuple.getPlayerName();
-  },
-
-  played: function () {
-    return Tuple.getPlayerGamesPlayed();
-  },
-
-  points: () => {
-    return Tuple.getPlayerLifetimePoints();
-  },
-
-  time: function () {
-    return Tuple.msToTime(Tuple.getPlayerLifetimeTimePlayed());
-  },
-
-  tuples: function () {
-    return Tuple.getPlayerLifetimeTuples();
-  },
-
-});
-
-
-Template.statsPlayer.onCreated(function () {
-
-  this.subscribe('player');
-
-});
-
-
 import Shuffle from 'shuffle';
 Object.assign(Tuple, {
 
   cardsLeft: () => {
-    let deck = Session.get('deck');
+    const deck = Session.get('deck');
     return (
       deck
       && ('number' == typeof(deck.length))
@@ -466,16 +18,16 @@ Object.assign(Tuple, {
   },
 
   checkTuple: () => {
-    let gid = (Session.get('game')) ? Session.get('game')._id : 0;
+    const gid = (Session.get('game')) ? Session.get('game')._id : 0;
+    const lastCheck = Session.get('lastCheck');
+    const now = new Date();
+    const pid = Meteor.userId();
+    const selection = Session.get('selectionSet');
+    const state = Tuple.getGameState() || {};
+    const timeSinceLast = now - lastCheck;
+    const tuple = Tuple.isTuple(selection);
     let isTuple = false;
-    let lastCheck = Session.get('lastCheck');
-    let now = new Date();
-    let pid = Meteor.userId();
-    let selection = Session.get('selectionSet');
     let set;
-    let state = Tuple.getGameState() || {};
-    let timeSinceLast = now - lastCheck;
-    let tuple = Tuple.isTuple(selection);
     Meteor.call('tupleIncrementPlayerTimePlayed', pid, timeSinceLast);
     Meteor.call('tupleIncrementGlobalTimePlayed', timeSinceLast);
     Meteor.call('tupleSaveGameState', gid, state);
@@ -483,9 +35,9 @@ Object.assign(Tuple, {
     $('.card-holder').removeClass('card-holder-active');
     if (tuple) {
       Tuple.popAlert('Tuple!', 'success');
-      let deck = Session.get('deck') || [];
+      const deck = Session.get('deck') || [];
+      const mLength = Session.get('master').length;
       let length = 0;
-      let mLength = Session.get('master').length;
       let tuples = 0;
       isTuple = true;
       Meteor.call('tupleIncrementGlobalLifetimeTuples');
@@ -495,8 +47,8 @@ Object.assign(Tuple, {
         $('body').removeClass('tuple', 350);
       });
       _.each(selection, (id) => {
-        let card = Cards.findOne({_id: id});
-        let num = card.num || 0;
+        const card = Cards.findOne({_id: id});
+        const num = card.num || 0;
         _.each(deck, (c, k) => {
           if (id == c._id) {
             deck.splice(k, 1);
@@ -541,8 +93,8 @@ Object.assign(Tuple, {
     let newCards = [];
     let master = Session.get('master');
     if (!master.length) return 0;
+    const deck = Shuffle.shuffle({deck: master});
     let cardsOnTable = Session.get('deck');
-    let deck = Shuffle.shuffle({deck: master});
     let length = 0;
     newCards = deck.draw(3);
     length = deck.length;
@@ -558,8 +110,8 @@ Object.assign(Tuple, {
   },
 
   deal: () => {
+    const deck = Shuffle.shuffle({deck: Tuple.getAllCards()});
     let cards = [];
-    let deck = Shuffle.shuffle({deck: Tuple.getAllCards()});
     deck.shuffle();
     cards = deck.draw(12);
     Session.set('master', deck.cards);
@@ -573,14 +125,14 @@ Object.assign(Tuple, {
 
   gameOver: (id, state) => {
     Session.set('gameOver', true);
-    let fails = state.game.fails;
-    let gid = state.game._id;
-    let lastCheck = Session.get('lastCheck');
-    let now = new Date();
-    let pid = Meteor.userId();
-    let points = state.game.points;
-    let timeSinceLast = now - lastCheck;
-    let tuples = state.game.tuples;
+    const fails = state.game.fails;
+    const gid = state.game._id;
+    const lastCheck = Session.get('lastCheck');
+    const now = new Date();
+    const pid = Meteor.userId();
+    const points = state.game.points;
+    const timeSinceLast = now - lastCheck;
+    const tuples = state.game.tuples;
     Meteor.call('tupleSaveGameState', gid, state);
     Meteor.call('tupleSaveScore', {
       fails: fails,
@@ -617,18 +169,16 @@ Object.assign(Tuple, {
   },
 
   getSVGfromEvent: (event) => {
-    let num = $(event.target).attr('id').substr(3);
-    let svg = $('#svg-' + num);
-    return svg;
+    const num = $(event.target).attr('id').substr(3);
+    return $('#svg-' + num);
   },
 
   getSVGattribute: (svg, attribute) => {
-    let value = $(svg).find('path').attr('style');
-    return value;
+    return $(svg).find('path').attr('style');
   },
 
   initializeGameState: (id) => {
-    let game = _.omit(
+    const game = _.omit(
       Games.findOne(id),
       'players',
       'stamps',
@@ -645,7 +195,7 @@ Object.assign(Tuple, {
   },
 
   isSelected: (id) => {
-    let selected = Session.get('selectionSet') || [];
+    const selected = Session.get('selectionSet') || [];
     return (-1 != _.indexOf(selected, id));
   },
 
@@ -691,9 +241,9 @@ Object.assign(Tuple, {
   },
 
   selectionAdd: (id) => {
-    let card = Cards.findOne({_id: id});
-    let num = card.num;
-    let selections = Session.get("selectionSet") || [];
+    const card = Cards.findOne({_id: id});
+    const num = card.num;
+    const selections = Session.get("selectionSet") || [];
     if (2 < selections.length) {
       Tuple.popAlert('You may only have three cards selected!', 'warning');
       return;
@@ -715,8 +265,8 @@ Object.assign(Tuple, {
 
   selectionCheck: (context, svg) => {
     Session.set('selectedCard', context);
-    let id = context._id;
-    let selected = Session.get('selectionSet') || [];
+    const id = context._id;
+    const selected = Session.get('selectionSet') || [];
     if (-1 == _.indexOf(selected, id)) {
       Tuple.selectionAdd(id);
     } else {
@@ -734,8 +284,8 @@ Object.assign(Tuple, {
   },
 
   selectionRemove: (id) => {
-    let card = Cards.findOne({_id: id});
-    let num = card.num;
+    const card = Cards.findOne({_id: id});
+    const num = card.num;
     let selections = Session.get("selectionSet") || [];
     if (-1 != _.indexOf(selections, id)) {
       selections = _.without(selections, id);
@@ -746,7 +296,7 @@ Object.assign(Tuple, {
   },
 
   shuffleDeck: () => {
-    let deck = Session.get('deck');
+    const deck = Session.get('deck');
     return deck.shuffle();
   },
 
